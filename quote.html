@@ -1,257 +1,408 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Get a Quote — BlueSky Siding &amp; Cladding Inc.</title>
-<style>@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap');
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
-body{font-family:"DM Sans",Georgia,sans-serif;color:#1A2D42;background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',Georgia,sans-serif;color:#1A2D42;background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
 :root{--navy:#0B1F3A;--sky:#2C7BE5;--skyL:#4F9EF8;--steel:#4A5D72;--cream:#F5F7FA;--muted:#6B7E92;}
-#loader{position:fixed;inset:0;background:var(--navy);z-index:9000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;}
-.ld-text{font-family:"Playfair Display",serif;font-size:1.8rem;font-weight:700;color:#fff;opacity:0;animation:fadeIn .6s .2s ease forwards;}
-.ld-text span{color:var(--skyL);}.ld-track{width:200px;height:2px;background:rgba(255,255,255,.12);border-radius:2px;overflow:hidden;opacity:0;animation:fadeIn .6s .4s ease forwards;}
+#loader{position:fixed;inset:0;background:var(--navy);z-index:9000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;transition:opacity .7s ease,transform .7s ease;}
+#loader.out{opacity:0;transform:translateY(-100%);pointer-events:none;}
+.ld-text{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#fff;opacity:0;animation:fadeIn .6s .2s ease forwards;}
+.ld-text span{color:var(--skyL);}
+.ld-track{width:200px;height:2px;background:rgba(255,255,255,.12);border-radius:2px;overflow:hidden;opacity:0;animation:fadeIn .6s .4s ease forwards;}
 .ld-bar{height:100%;width:0%;background:linear-gradient(90deg,var(--sky),var(--skyL));animation:ldBar 1.6s .5s ease forwards;}
-@keyframes ldBar{to{width:100%;}}@keyframes fadeIn{to{opacity:1;}}
-#loader.out{animation:ldOut .7s ease forwards;}@keyframes ldOut{to{transform:translateY(-100%);opacity:0;}}
+@keyframes ldBar{to{width:100%;}}
+@keyframes fadeIn{to{opacity:1;}}
 .navbar{position:fixed;top:0;width:100%;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(11,31,58,.08);box-shadow:0 1px 20px rgba(0,0,0,.06);z-index:500;transform:translateY(-100%);animation:navIn .6s 2.1s ease forwards;}
 @keyframes navIn{to{transform:translateY(0);}}
 .nav-inner{max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.85rem 2rem;}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}.logo img{height:52px;}
-.logo-name{font-weight:700;font-size:1.05rem;color:var(--navy);line-height:1.3;}.logo-name span{color:var(--sky);}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo img{height:52px;border-radius:6px;}
+.logo-name{font-weight:700;font-size:1.05rem;color:var(--navy);line-height:1.3;}
+.logo-name span{color:var(--sky);}
 .nav-links{display:flex;align-items:center;gap:2rem;list-style:none;}
 .nav-links a{text-decoration:none;font-size:.9rem;font-weight:500;color:var(--steel);transition:color .2s;position:relative;}
-.nav-links a::after{content:"";position:absolute;bottom:-3px;left:0;right:0;height:1.5px;background:var(--sky);transform:scaleX(0);transform-origin:right;transition:transform .3s;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1.5px;background:var(--sky);transform:scaleX(0);transform-origin:right;transition:transform .3s;}
 .nav-links a:hover,.nav-links a.active{color:var(--sky);}
 .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);transform-origin:left;}
 .nav-cta{background:var(--sky)!important;color:#fff!important;padding:.6rem 1.4rem;border-radius:6px;font-weight:600!important;}
-.nav-cta::after{display:none!important;}.nav-cta:hover{background:#1a6dd0!important;}
-.hero{margin-top:80px;min-height:70vh;background:var(--navy);position:relative;overflow:hidden;display:flex;align-items:center;}
-.hero-mesh{position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 65% 45%,rgba(44,123,229,.22) 0%,transparent 65%);}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(44,123,229,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(44,123,229,.07) 1px,transparent 1px);background-size:60px 60px;}
-.hero-inner{position:relative;z-index:2;max-width:1320px;margin:0 auto;width:100%;padding:6rem 2rem 5rem;}
+.nav-cta::after{display:none!important;}
+.nav-cta:hover{background:#1a6dd0!important;box-shadow:0 6px 20px rgba(44,123,229,.35)!important;}
+.hero{margin-top:80px;min-height:72vh;background:var(--navy);position:relative;overflow:hidden;display:flex;align-items:center;}
+.hero-mesh{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 80% 70% at 65% 45%,rgba(44,123,229,.22) 0%,transparent 65%),radial-gradient(ellipse 50% 60% at 5% 85%,rgba(79,158,248,.12) 0%,transparent 55%);animation:meshShift 12s ease-in-out infinite alternate;}
+@keyframes meshShift{0%{filter:hue-rotate(0deg) brightness(1);}100%{filter:hue-rotate(15deg) brightness(1.08);}}
+.hero-grid{position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(44,123,229,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(44,123,229,.07) 1px,transparent 1px);background-size:60px 60px;animation:gridDrift 20s linear infinite;}
+@keyframes gridDrift{0%{background-position:0 0;}100%{background-position:60px 60px;}}
+.hero-inner{position:relative;z-index:2;max-width:1320px;margin:0 auto;width:100%;padding:6rem 2rem 5rem;display:grid;grid-template-columns:1.1fr .9fr;gap:5rem;align-items:center;}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--skyL);margin-bottom:1.2rem;opacity:0;transform:translateX(-30px);animation:sRight .7s 2.2s ease forwards;}
-.hero-eyebrow::before{content:"";width:28px;height:2px;background:var(--skyL);display:block;}
+.hero-eyebrow::before{content:'';width:28px;height:2px;background:var(--skyL);display:block;}
 @keyframes sRight{to{opacity:1;transform:translateX(0);}}
-.hero h1{font-family:"Playfair Display",serif;font-size:clamp(2.4rem,4vw,3.8rem);font-weight:700;color:#fff;line-height:1.12;margin-bottom:1.4rem;opacity:0;transform:translateY(40px);animation:sUp .8s 2.35s ease forwards;}
-.hero h1 em{font-style:italic;color:var(--skyL);}@keyframes sUp{to{opacity:1;transform:translateY(0);}}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4vw,3.8rem);font-weight:700;color:#fff;line-height:1.12;margin-bottom:1.4rem;opacity:0;transform:translateY(40px);animation:sUp .8s 2.35s ease forwards;}
+.hero h1 em{font-style:italic;color:var(--skyL);}
+@keyframes sUp{to{opacity:1;transform:translateY(0);}}
 .hero-desc{font-size:1.05rem;color:rgba(255,255,255,.65);line-height:1.85;max-width:500px;opacity:0;transform:translateY(30px);animation:sUp .8s 2.5s ease forwards;}
+.hero-badges{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2.5rem;opacity:0;animation:sUp .8s 2.65s ease forwards;}
+.badge{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.8);font-size:.8rem;font-weight:500;padding:.45rem 1rem;border-radius:50px;transition:background-color .3s,border-color .3s;}
+.badge:hover{background:rgba(44,123,229,.2);border-color:rgba(44,123,229,.4);}
+.hero-visual{opacity:0;transform:translateX(50px);animation:sLeft .9s 2.4s ease forwards;}
+@keyframes sLeft{to{opacity:1;transform:translateX(0);}}
+.visual-panel{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:2.2rem;position:relative;overflow:hidden;}
+.visual-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--sky),var(--skyL),#38b6ff);}
+.vp-title{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1.6rem;}
+.vp-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.6rem;}
+.vp-stat{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:1.1rem 1rem;text-align:center;transition:background-color .3s,border-color .3s;}
+.vp-stat:hover{background:rgba(44,123,229,.12);border-color:rgba(44,123,229,.25);}
+.vp-stat-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--skyL);line-height:1;}
+.vp-stat-lbl{font-size:.76rem;color:rgba(255,255,255,.45);margin-top:.3rem;font-weight:500;}
+.vp-divider{height:1px;background:rgba(255,255,255,.08);margin:0 0 1.4rem;}
+.vp-list{display:flex;flex-direction:column;gap:.7rem;}
+.vp-item{display:flex;align-items:center;gap:.9rem;font-size:.88rem;color:rgba(255,255,255,.7);font-weight:500;}
+.vp-dot{width:7px;height:7px;min-width:7px;background:var(--skyL);border-radius:50%;box-shadow:0 0 8px rgba(79,158,248,.5);}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeIn 1s 3.2s ease forwards;}
+.scroll-hint span{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);}
+.scroll-mouse{width:22px;height:34px;border:1.5px solid rgba(255,255,255,.25);border-radius:11px;display:flex;align-items:flex-start;justify-content:center;padding-top:6px;}
+.scroll-wheel{width:3px;height:8px;background:var(--skyL);border-radius:2px;animation:wheel 1.5s ease-in-out infinite;}
+@keyframes wheel{0%{transform:translateY(0);opacity:1;}100%{transform:translateY(12px);opacity:0;}}
 .marquee{background:var(--sky);padding:.9rem 0;overflow:hidden;}
 .marquee-track{display:flex;gap:3rem;width:max-content;animation:mroll 25s linear infinite;}
 @keyframes mroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 .marquee-item{font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.9);white-space:nowrap;display:flex;align-items:center;gap:1.5rem;}
 .mdot{width:5px;height:5px;background:rgba(255,255,255,.5);border-radius:50%;display:inline-block;}
-.section{padding:8rem 2rem;}.section-inner{max-width:1320px;margin:0 auto;}
-.sec-label{font-size:.76rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--sky);margin-bottom:1rem;}
-.sec-heading{font-family:"Playfair Display",serif;font-size:clamp(2rem,3vw,3rem);font-weight:700;color:var(--navy);line-height:1.15;margin-bottom:1.5rem;}
-.sec-heading em{font-style:italic;color:var(--sky);}
-.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
-.card{background:#fff;border-radius:16px;padding:2rem 1.8rem;border:1px solid rgba(11,31,58,.06);transition:border-color .3s,box-shadow .3s;}
-.card:hover{border-color:rgba(44,123,229,.18);box-shadow:0 20px 50px rgba(44,123,229,.1);}
-.card-icon{font-size:1.8rem;margin-bottom:1rem;}
-.card h3{font-family:"Playfair Display",serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:.6rem;}
-.card p{font-size:.9rem;color:var(--muted);line-height:1.8;}
-.cta-section{background:linear-gradient(135deg,#1056bb 0%,var(--sky) 60%,#38b6ff 100%);padding:7rem 2rem;text-align:center;}
-.cta-inner{max-width:720px;margin:0 auto;}
-.cta-inner h2{font-family:"Playfair Display",serif;font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:700;color:#fff;margin-bottom:1.2rem;line-height:1.15;}
-.cta-inner p{font-size:1.05rem;color:rgba(255,255,255,.8);line-height:1.8;margin-bottom:2.8rem;}
-.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
-.btn-solid{display:inline-block;background:#fff;color:var(--sky);padding:.95rem 2.4rem;border-radius:8px;font-weight:700;font-size:.95rem;text-decoration:none;box-shadow:0 6px 30px rgba(0,0,0,.2);transition:transform .2s;}
-.btn-solid:hover{transform:translateY(-3px);}
-.btn-outline{display:inline-block;background:transparent;color:#fff;padding:.95rem 2.4rem;border-radius:8px;font-weight:700;font-size:.95rem;text-decoration:none;border:2px solid rgba(255,255,255,.5);transition:border-color .2s,background .2s,transform .2s;}
-.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.1);transform:translateY(-3px);}
-.footer{background:var(--cream);border-top:1px solid rgba(0,0,0,.06);padding:4.5rem 2rem 2rem;}
-.footer-inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
-.flogo{display:flex;align-items:center;gap:10px;margin-bottom:1rem;}.flogo img{height:50px;}
-.flogo-name{font-weight:700;font-size:.95rem;color:var(--navy);}.flogo-name span{color:var(--sky);}
-.fdesc{font-size:.9rem;color:var(--muted);line-height:1.8;}
-.footer h4{font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:1.4rem;}
-.footer ul{list-style:none;}.footer ul li{margin-bottom:.75rem;}
-.footer ul a{font-size:.9rem;color:var(--muted);text-decoration:none;transition:color .2s;}.footer ul a:hover{color:var(--sky);}
-.fcopy{border-top:1px solid rgba(0,0,0,.08);padding-top:1.5rem;font-size:.85rem;color:var(--muted);text-align:center;}
-.rv{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease;}.rv.on{opacity:1;transform:none;}
-.rv.l{transform:translateX(-40px);}.rv.r{transform:translateX(40px);}
-.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
-@media(max-width:768px){.nav-links{display:none;}.card-grid{grid-template-columns:1fr;}.footer-inner{grid-template-columns:1fr 1fr;}.cta-btns{flex-direction:column;align-items:center;}}
-.hero-inner{padding:6rem 2rem 5rem;max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
-.hero-badges{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2.5rem;opacity:0;animation:sUp .8s 2.65s ease forwards;}
-.badge{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.8);font-size:.8rem;font-weight:500;padding:.45rem 1rem;border-radius:50px;}
-.visual-panel{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:2.2rem;position:relative;overflow:hidden;}
-.visual-panel::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--sky),var(--skyL));}
-.vp-title{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1.4rem;}
-.vp-item{display:flex;align-items:center;gap:.8rem;font-size:.88rem;color:rgba(255,255,255,.7);font-weight:500;margin-bottom:.6rem;}
-.vp-dot{width:7px;height:7px;min-width:7px;background:var(--skyL);border-radius:50%;}
-.quote-wrap{background:#fff;padding:5rem 2rem 8rem;}.quote-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1.55fr;gap:6rem;align-items:start;}
+.quote-wrap{background:#fff;padding:5rem 2rem 8rem;position:relative;overflow:hidden;}
+.quote-wrap::after{content:'';position:absolute;top:-100px;right:-100px;width:450px;height:450px;background:radial-gradient(circle,rgba(44,123,229,.04),transparent 70%);border-radius:50%;pointer-events:none;}
+.quote-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1.55fr;gap:6rem;align-items:start;position:relative;z-index:1;}
 .q-side{position:sticky;top:120px;}
+.sec-label{font-size:.76rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--sky);margin-bottom:1rem;display:flex;align-items:center;gap:8px;}
+.sec-label::after{content:'';width:40px;height:1px;background:var(--sky);opacity:.4;}
+.q-side h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,2.5vw,2.6rem);font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:1rem;}
+.q-side h2 em{font-style:italic;color:var(--sky);}
+.q-side-desc{font-size:.97rem;color:var(--muted);line-height:1.9;margin-bottom:2rem;}
 .why-list{display:flex;flex-direction:column;gap:.9rem;margin-bottom:2rem;}
-.why-item{display:flex;gap:1rem;align-items:flex-start;padding:1.1rem 1.2rem;background:var(--cream);border-radius:11px;border:1px solid rgba(11,31,58,.06);transition:border-color .2s,transform .2s;}
-.why-item:hover{border-color:rgba(44,123,229,.2);transform:translateX(4px);}
+.why-item{display:flex;gap:1rem;align-items:flex-start;padding:1.1rem 1.2rem;background:var(--cream);border-radius:11px;border:1px solid rgba(11,31,58,.06);transition:border-color .2s,background-color .2s,transform .2s;}
+.why-item:hover{border-color:rgba(44,123,229,.2);background:rgba(44,123,229,.03);transform:translateX(4px);}
 .wi-ico{font-size:1.3rem;margin-top:1px;min-width:24px;}
 .wi-txt strong{display:block;font-size:.85rem;font-weight:600;color:var(--navy);margin-bottom:.15rem;}
 .wi-txt span{font-size:.8rem;color:var(--muted);line-height:1.6;}
 .q-contact-strip{background:var(--navy);border-radius:14px;padding:1.4rem 1.6rem;display:flex;align-items:center;gap:1.2rem;}
 .qcs-ico{font-size:1.4rem;}
 .qcs-txt strong{display:block;font-size:.88rem;font-weight:600;color:#fff;margin-bottom:.1rem;}
-.qcs-txt a{font-size:.82rem;color:var(--skyL);text-decoration:none;}
+.qcs-txt a{font-size:.82rem;color:var(--skyL);text-decoration:none;transition:color .2s;}
+.qcs-txt a:hover{color:#fff;}
 .form-card{background:#fff;border-radius:20px;padding:2.8rem;box-shadow:0 24px 70px rgba(44,123,229,.09);border:1px solid rgba(11,31,58,.07);position:relative;overflow:hidden;}
-.form-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#1056bb,var(--sky),var(--skyL),#38b6ff);}
-.email-title{font-family:"Playfair Display",serif;font-size:1.6rem;font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:.4rem;}
+.form-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#1056bb,var(--sky),var(--skyL),#38b6ff);}
+.email-eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sky);margin-bottom:.5rem;}
+.email-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:.4rem;}
 .email-sub{font-size:.88rem;color:var(--muted);line-height:1.7;margin-bottom:1.8rem;}
-.email-address-box{background:var(--cream);border:2px dashed rgba(44,123,229,.3);border-radius:12px;padding:1.3rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.4rem;}
+.email-address-box{background:var(--cream);border:2px dashed rgba(44,123,229,.3);border-radius:12px;padding:1.3rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.4rem;transition:border-color .3s;}
+.email-address-box:hover{border-color:var(--sky);}
 .email-addr-text{font-size:1.05rem;font-weight:700;color:var(--sky);}
-.copy-btn{background:var(--navy);color:#fff;border:none;border-radius:7px;padding:.5rem 1.1rem;font-size:.8rem;font-weight:600;cursor:pointer;transition:background .2s;font-family:"DM Sans",sans-serif;}
-.copy-btn:hover{background:var(--sky);}
+.copy-btn{background:var(--navy);color:#fff;border:none;border-radius:7px;padding:.5rem 1.1rem;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;font-family:'DM Sans',sans-serif;}
+.copy-btn:hover{background:var(--sky);transform:translateY(-1px);}
 .copy-btn.copied{background:#16a34a;}
-.email-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:linear-gradient(90deg,#1056bb,var(--sky));color:#fff;border:none;border-radius:10px;padding:1.05rem 1.6rem;font-size:.95rem;font-weight:700;text-decoration:none;transition:all .3s;font-family:"DM Sans",sans-serif;margin-bottom:2rem;}
+.email-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:linear-gradient(90deg,#1056bb,var(--sky));color:#fff;border:none;border-radius:10px;padding:1.05rem 1.6rem;font-size:.95rem;font-weight:700;text-decoration:none;transition:all .3s;font-family:'DM Sans',sans-serif;margin-bottom:2rem;}
 .email-btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(44,123,229,.35);}
+.email-btn svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
 .include-label{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.9rem;}
 .include-list{list-style:none;display:flex;flex-direction:column;gap:.65rem;margin-bottom:2rem;}
 .include-list li{display:flex;align-items:center;gap:10px;font-size:.88rem;color:var(--steel);}
+.check-circle{width:20px;height:20px;border-radius:50%;background:rgba(44,123,229,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.check-circle svg{width:10px;height:10px;stroke:var(--sky);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.divider-line{height:1px;background:rgba(11,31,58,.07);margin:0 0 1.5rem;}
 .alt-contact{display:flex;align-items:center;gap:14px;background:var(--cream);border-radius:12px;padding:1.2rem 1.4rem;}
 .alt-icon{width:42px;height:42px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
 .alt-text p{font-size:.78rem;color:var(--muted);margin-bottom:2px;}
-.alt-text a{font-size:1rem;font-weight:700;color:var(--navy);text-decoration:none;}
+.alt-text a{font-size:1rem;font-weight:700;color:var(--navy);text-decoration:none;transition:color .2s;}
 .alt-text a:hover{color:var(--sky);}
-.stats-band{background:var(--navy);padding:5rem 2rem;}.stats-inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
-.s-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:2rem 1.5rem;text-align:center;transition:background .3s,transform .3s;}
-.s-item:hover{background:rgba(44,123,229,.12);transform:translateY(-5px);}
-.s-num{font-family:"Playfair Display",serif;font-size:2.8rem;font-weight:700;color:var(--skyL);line-height:1;margin-bottom:.4rem;}
+.stats-band{background:var(--navy);padding:5rem 2rem;position:relative;overflow:hidden;}
+.stats-band::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(44,123,229,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(44,123,229,.06) 1px,transparent 1px);background-size:55px 55px;pointer-events:none;}
+.stats-band::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 80% 40%,rgba(44,123,229,.14) 0%,transparent 60%);pointer-events:none;}
+.stats-inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;position:relative;z-index:2;}
+.s-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:2rem 1.5rem;text-align:center;transition:background-color .3s,border-color .3s,transform .3s;}
+.s-item:hover{background:rgba(44,123,229,.12);border-color:rgba(44,123,229,.25);transform:translateY(-5px);}
+.s-num{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;color:var(--skyL);line-height:1;margin-bottom:.4rem;}
 .s-lbl{font-size:.82rem;color:rgba(255,255,255,.5);font-weight:500;text-transform:uppercase;letter-spacing:.08em;}
-@media(max-width:1024px){.quote-inner{grid-template-columns:1fr;gap:3rem};.q-side{position:static};.stats-inner{grid-template-columns:repeat(2,1fr)};.hero-inner{grid-template-columns:1fr}}
-@media(max-width:480px){.stats-inner{grid-template-columns:1fr 1fr};.form-card{padding:1.8rem};.email-address-box{flex-direction:column;align-items:flex-start}}
+.cta-section{background:linear-gradient(135deg,#1056bb 0%,var(--sky) 60%,#38b6ff 100%);padding:7rem 2rem;text-align:center;position:relative;overflow:hidden;}
+.cta-section::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(-45deg,transparent,transparent 28px,rgba(255,255,255,.04) 28px,rgba(255,255,255,.04) 29px);pointer-events:none;}
+.corb{position:absolute;border-radius:50%;background:rgba(255,255,255,.06);animation:orbF linear infinite;pointer-events:none;}
+.corb:nth-child(1){width:320px;height:320px;top:-80px;left:-80px;animation-duration:18s;}
+.corb:nth-child(2){width:220px;height:220px;bottom:-60px;right:-50px;animation-duration:14s;}
+.corb:nth-child(3){width:160px;height:160px;top:40%;right:12%;animation-duration:22s;}
+@keyframes orbF{0%,100%{transform:translateY(0) rotate(0deg);}33%{transform:translateY(-30px) rotate(120deg);}66%{transform:translateY(20px) rotate(240deg);}}
+.cta-inner{position:relative;z-index:2;max-width:720px;margin:0 auto;}
+.cta-inner h2{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:700;color:#fff;margin-bottom:1.2rem;line-height:1.15;}
+.cta-inner p{font-size:1.05rem;color:rgba(255,255,255,.8);line-height:1.8;margin-bottom:2.8rem;}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.btn-solid{display:inline-block;background:#fff;color:var(--sky);padding:.95rem 2.4rem;border-radius:8px;font-weight:700;font-size:.95rem;text-decoration:none;box-shadow:0 6px 30px rgba(0,0,0,.2);transition:transform .2s,box-shadow .2s;}
+.btn-solid:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 12px 40px rgba(0,0,0,.3);}
+.btn-outline{display:inline-block;background:transparent;color:#fff;padding:.95rem 2.4rem;border-radius:8px;font-weight:700;font-size:.95rem;text-decoration:none;border:2px solid rgba(255,255,255,.5);transition:border-color .2s,background-color .2s,transform .2s;}
+.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.1);transform:translateY(-3px);}
+.footer{background:var(--cream);border-top:1px solid rgba(0,0,0,.06);padding:4.5rem 2rem 2rem;}
+.footer-inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.flogo{display:flex;align-items:center;gap:10px;margin-bottom:1rem;}
+.flogo img{height:50px;border-radius:6px;}
+.flogo-name{font-weight:700;font-size:.95rem;color:var(--navy);}
+.flogo-name span{color:var(--sky);}
+.fdesc{font-size:.9rem;color:var(--muted);line-height:1.8;}
+.footer h4{font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:1.4rem;}
+.footer ul{list-style:none;}
+.footer ul li{margin-bottom:.75rem;}
+.footer ul a{font-size:.9rem;color:var(--muted);text-decoration:none;transition:color .2s,padding-left .2s;}
+.footer ul a:hover{color:var(--sky);padding-left:4px;}
+.fcopy{border-top:1px solid rgba(0,0,0,.08);padding-top:1.5rem;font-size:.85rem;color:var(--muted);text-align:center;}
+.rv{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease;}
+.rv.l{transform:translateX(-40px);}
+.rv.r{transform:translateX(40px);}
+.rv.sc{transform:scale(.92);}
+.rv.on{opacity:1;transform:none;}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
+@media(max-width:1024px){.quote-inner{grid-template-columns:1fr;gap:3rem;}.q-side{position:static;}.stats-inner{grid-template-columns:repeat(2,1fr);}.hero-inner{grid-template-columns:1fr;}.hero-visual{display:none;}}
+@media(max-width:768px){.nav-links{display:none;}.footer-inner{grid-template-columns:1fr 1fr;}.cta-btns{flex-direction:column;align-items:center;}.email-address-box{flex-direction:column;align-items:flex-start;gap:.8rem;}.copy-btn{width:100%;}}
+@media(max-width:480px){.stats-inner{grid-template-columns:1fr 1fr;}.form-card{padding:1.8rem;}}
 </style>
 </head>
 <body>
-<div id="loader"><div class="ld-text">Blue Sky <span>Siding</span></div><div class="ld-track"><div class="ld-bar"></div></div></div>
+
+<div id="loader">
+  <div class="ld-text">Blue Sky <span>Siding</span></div>
+  <div class="ld-track"><div class="ld-bar"></div></div>
+</div>
+
+<!-- NAVBAR — updated: removed Products, added Blue Sky Supplies -->
 <nav class="navbar">
   <div class="nav-inner">
-    <a href="index.html" class="logo"><img src="logo.jpg" alt="BlueSky Siding"><span class="logo-name">Blue Sky Siding <span>&amp; Cladding Inc.</span></span></a>
-    <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="bluskysupplies.html">Blue Sky Supplies</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact</a></li><li><a href="quote.html" class="nav-cta active">Get a Quote</a></li></ul>
+    <a href="index.html" class="logo">
+      <img src="images/logo.jpg" alt="BlueSky Siding">
+      <span class="logo-name">Blue Sky Siding <span>&amp; Cladding Inc.</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="bluskysupplies.html">Blue Sky Supplies</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="quote.html" class="nav-cta active">Get a Quote</a></li>
+    </ul>
   </div>
 </nav>
+
 <section class="hero">
-  <div class="hero-mesh"></div><div class="hero-grid"></div>
+  <div class="hero-mesh"></div>
+  <div class="hero-grid"></div>
   <div class="hero-inner">
     <div>
       <p class="hero-eyebrow">Free Estimate</p>
       <h1>Request Your<br><em>Project Quote.</em></h1>
-      <p class="hero-desc">Tell us about your siding or cladding project and we'll get back to you with a detailed, transparent estimate — no obligations, no hidden fees.</p>
+      <p class="hero-desc">Tell us about your siding or cladding project and we'll get back to you with a detailed, transparent estimate no obligations, no hidden fees.</p>
       <div class="hero-badges">
-        <span class="badge">No Obligation</span><span class="badge">Response Within 24 Hours</span><span class="badge">Detailed Breakdown</span><span class="badge">GTA Coverage</span>
+        <span class="badge">No Obligation</span>
+        <span class="badge">Response Within 24 Hours</span>
+        <span class="badge">Detailed Breakdown</span>
+        <span class="badge">GTA Coverage</span>
       </div>
     </div>
-    <div style="opacity:0;transform:translateX(50px);animation:sLeft .9s 2.4s ease forwards;">
+    <div class="hero-visual">
       <div class="visual-panel">
         <p class="vp-title">Why Request a Quote</p>
-        <div class="vp-item"><span class="vp-dot"></span><span>Itemized, Transparent Pricing</span></div>
-        <div class="vp-item"><span class="vp-dot"></span><span>Licensed &amp; Fully Insured</span></div>
-        <div class="vp-item"><span class="vp-dot"></span><span>Expert Material Recommendations</span></div>
-        <div class="vp-item"><span class="vp-dot"></span><span>Full Project Management A–Z</span></div>
-        <div class="vp-item"><span class="vp-dot"></span><span>Response Within 24 Hours</span></div>
+        <div class="vp-stats">
+          <div class="vp-stat"><div class="vp-stat-num">24h</div><div class="vp-stat-lbl">Response Time</div></div>
+          <div class="vp-stat"><div class="vp-stat-num">100%</div><div class="vp-stat-lbl">Free &amp; No Obligation</div></div>
+          <div class="vp-stat"><div class="vp-stat-num">4+</div><div class="vp-stat-lbl">Years Experience</div></div>
+          <div class="vp-stat"><div class="vp-stat-num">100+</div><div class="vp-stat-lbl">Projects Completed</div></div>
+        </div>
+        <div class="vp-divider"></div>
+        <div class="vp-list">
+          <div class="vp-item"><span class="vp-dot"></span><span>Itemized, Transparent Pricing</span></div>
+          <div class="vp-item"><span class="vp-dot"></span><span>Licensed &amp; Fully Insured</span></div>
+          <div class="vp-item"><span class="vp-dot"></span><span>Expert Material Recommendations</span></div>
+          <div class="vp-item"><span class="vp-dot"></span><span>Full Project Management A–Z</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <div class="marquee-item">Free Estimate <span class="mdot"></span></div>
+    <div class="marquee-item">No Obligation <span class="mdot"></span></div>
+    <div class="marquee-item">Transparent Pricing <span class="mdot"></span></div>
+    <div class="marquee-item">Metal Cladding <span class="mdot"></span></div>
+    <div class="marquee-item">Aluminum Siding <span class="mdot"></span></div>
+    <div class="marquee-item">ACM Panels <span class="mdot"></span></div>
+    <div class="marquee-item">Custom Fabrication <span class="mdot"></span></div>
+    <div class="marquee-item">GTA Coverage <span class="mdot"></span></div>
+    <div class="marquee-item">Free Estimate <span class="mdot"></span></div>
+    <div class="marquee-item">No Obligation <span class="mdot"></span></div>
+    <div class="marquee-item">Transparent Pricing <span class="mdot"></span></div>
+    <div class="marquee-item">Metal Cladding <span class="mdot"></span></div>
+    <div class="marquee-item">Aluminum Siding <span class="mdot"></span></div>
+    <div class="marquee-item">ACM Panels <span class="mdot"></span></div>
+    <div class="marquee-item">Custom Fabrication <span class="mdot"></span></div>
+    <div class="marquee-item">GTA Coverage <span class="mdot"></span></div>
+  </div>
+</div>
+
+<section class="quote-wrap">
+  <div class="quote-inner">
+    <div class="q-side rv l">
+      <p class="sec-label">Get a Quote</p>
+      <h2>Tell us about<br><em>your project.</em></h2>
+      <p class="q-side-desc">Send us a quick email with your project details and one of our technical advisors will prepare a detailed, itemized quote for your review — usually within 24 hours.</p>
+      <div class="why-list">
+        <div class="why-item"><div class="wi-ico">⚡</div><div class="wi-txt"><strong>Fast Turnaround</strong><span>Quotes prepared and delivered within 1 business day</span></div></div>
+        <div class="why-item"><div class="wi-ico">📋</div><div class="wi-txt"><strong>Itemized Breakdown</strong><span>Clear line-by-line pricing with no surprises</span></div></div>
+        <div class="why-item"><div class="wi-ico">👷</div><div class="wi-txt"><strong>Expert Review</strong><span>Your request is reviewed by a certified installer</span></div></div>
+        <div class="why-item"><div class="wi-ico">🔒</div><div class="wi-txt"><strong>No Obligation</strong><span>Completely free — accept only if you're happy</span></div></div>
+        <div class="why-item"><div class="wi-ico">📸</div><div class="wi-txt"><strong>Share Plans or Photos</strong><span>Attach drawings or site photos for a more accurate quote</span></div></div>
+      </div>
+      <div class="q-contact-strip">
+        <div class="qcs-ico">📞</div>
+        <div class="qcs-txt">
+          <strong>Prefer to talk?</strong>
+          <a href="tel:+14167415140">+1(416) 741-5140</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-card rv r d2">
+      <p class="email-eyebrow">Simple &amp; Fast</p>
+      <h3 class="email-title">Send Us an Email</h3>
+      <p class="email-sub">No lengthy forms. Just email us with a few details about your project and we'll take it from there — usually back to you within 1 business day.</p>
+      <div class="email-address-box">
+        <span class="email-addr-text">info@blueskysiding.ca</span>
+        <button class="copy-btn" id="copyBtn" onclick="copyEmail()">Copy</button>
+      </div>
+      <a href="mailto:info@blueskysiding.ca?subject=Quote%20Request%20%E2%80%94%20BlueSky%20Siding&body=Hi%20Blue%20Sky%20Siding%20team%2C%0A%0AI%20would%20like%20to%20request%20a%20free%20quote%20for%20the%20following%20project%3A%0A%0AName%3A%20%0APhone%3A%20%0AProject%20Type%20(Residential%20%2F%20Commercial%20%2F%20Industrial%20%2F%20etc.)%3A%20%0AProject%20Address%20%2F%20Location%3A%20%0ADescription%20of%20Work%3A%20%0AApproximate%20Size%3A%20%0ADesired%20Timeline%3A%20%0A%0AThank%20you!" class="email-btn">
+        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+        Open Email App — info@blueskysiding.ca
+      </a>
+      <p class="include-label">What to include in your email</p>
+      <ul class="include-list">
+        <li><div class="check-circle"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>Your name and best contact number</li>
+        <li><div class="check-circle"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>Project address or general location (city / area)</li>
+        <li><div class="check-circle"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>Type of project — residential, commercial, industrial, etc.</li>
+        <li><div class="check-circle"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>Description of work needed (siding, cladding, repairs, etc.)</li>
+        <li><div class="check-circle"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>Any photos, drawings, or plans <em style="color:var(--muted);">(optional but helpful)</em></li>
+        <li><div class="check-circle"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>Preferred timeline or start date</li>
+      </ul>
+      <div class="divider-line"></div>
+      <div class="alt-contact">
+        <div class="alt-icon">📞</div>
+        <div class="alt-text">
+          <p>Prefer to call us directly?</p>
+          <a href="tel:+14167415140">+1(416) 741-5140</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
-<div class="marquee"><div class="marquee-track">
-  <div class="marquee-item">Free Estimate <span class="mdot"></span></div><div class="marquee-item">No Obligation <span class="mdot"></span></div>
-  <div class="marquee-item">Transparent Pricing <span class="mdot"></span></div><div class="marquee-item">Metal Cladding <span class="mdot"></span></div>
-  <div class="marquee-item">Aluminum Siding <span class="mdot"></span></div><div class="marquee-item">ACM Panels <span class="mdot"></span></div>
-  <div class="marquee-item">Custom Fabrication <span class="mdot"></span></div><div class="marquee-item">GTA Coverage <span class="mdot"></span></div>
-  <div class="marquee-item">Free Estimate <span class="mdot"></span></div><div class="marquee-item">No Obligation <span class="mdot"></span></div>
-  <div class="marquee-item">Transparent Pricing <span class="mdot"></span></div><div class="marquee-item">Metal Cladding <span class="mdot"></span></div>
-  <div class="marquee-item">Aluminum Siding <span class="mdot"></span></div><div class="marquee-item">ACM Panels <span class="mdot"></span></div>
-  <div class="marquee-item">Custom Fabrication <span class="mdot"></span></div><div class="marquee-item">GTA Coverage <span class="mdot"></span></div>
-</div></div>
-<section class="quote-wrap"><div class="quote-inner">
-  <div class="q-side rv l">
-    <p class="sec-label">Get a Quote</p>
-    <h2 class="sec-heading">Tell us about<br><em>your project.</em></h2>
-    <p style="font-size:.97rem;color:var(--muted);line-height:1.9;margin-bottom:2rem;">Send us a quick email with your project details and one of our technical advisors will prepare a detailed, itemized quote for your review — usually within 24 hours.</p>
-    <div class="why-list">
-      <div class="why-item"><div class="wi-ico">⚡</div><div class="wi-txt"><strong>Fast Turnaround</strong><span>Quotes prepared and delivered within 1 business day</span></div></div>
-      <div class="why-item"><div class="wi-ico">📋</div><div class="wi-txt"><strong>Itemized Breakdown</strong><span>Clear line-by-line pricing with no surprises</span></div></div>
-      <div class="why-item"><div class="wi-ico">👷</div><div class="wi-txt"><strong>Expert Review</strong><span>Your request is reviewed by a certified installer</span></div></div>
-      <div class="why-item"><div class="wi-ico">🔒</div><div class="wi-txt"><strong>No Obligation</strong><span>Completely free — accept only if you're happy</span></div></div>
-      <div class="why-item"><div class="wi-ico">📸</div><div class="wi-txt"><strong>Share Plans or Photos</strong><span>Attach drawings or site photos for a more accurate quote</span></div></div>
-    </div>
-    <div class="q-contact-strip"><div class="qcs-ico">📞</div><div class="qcs-txt"><strong>Prefer to talk?</strong><a href="tel:+14167415140">+1(416) 741-5140</a></div></div>
+
+<section class="stats-band">
+  <div class="stats-inner rv">
+    <div class="s-item"><div class="s-num">24h</div><div class="s-lbl">Average Quote Time</div></div>
+    <div class="s-item"><div class="s-num">100+</div><div class="s-lbl">Projects Quoted</div></div>
+    <div class="s-item"><div class="s-num">100%</div><div class="s-lbl">Free &amp; No Obligation</div></div>
+    <div class="s-item"><div class="s-num">GTA</div><div class="s-lbl">Regional Coverage</div></div>
   </div>
-  <div class="form-card rv r d2">
-    <p style="font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sky);margin-bottom:.5rem;">Simple &amp; Fast</p>
-    <h3 class="email-title">Send Us an Email</h3>
-    <p class="email-sub">No lengthy forms. Just email us with a few details about your project and we'll take it from there — usually back to you within 1 business day.</p>
-    <div class="email-address-box">
-      <span class="email-addr-text">info@blueskysiding.ca</span>
-      <button class="copy-btn" id="copyBtn" onclick="copyEmail()">Copy</button>
-    </div>
-    <a href="mailto:info@blueskysiding.ca?subject=Quote%20Request%20%E2%80%94%20BlueSky%20Siding&body=Hi%20Blue%20Sky%20Siding%20team%2C%0A%0AI%20would%20like%20to%20request%20a%20free%20quote%20for%20the%20following%20project%3A%0A%0AName%3A%20%0APhone%3A%20%0AProject%20Type%3A%20%0AProject%20Address%3A%20%0ADescription%20of%20Work%3A%20%0AApproximate%20Size%3A%20%0ADesired%20Timeline%3A%20%0A%0AThank%20you!" class="email-btn">&#9993; Open Email App — info@blueskysiding.ca</a>
-    <p class="include-label">What to include in your email</p>
-    <ul class="include-list">
-      <li>✓ Your name and best contact number</li>
-      <li>✓ Project address or general location (city / area)</li>
-      <li>✓ Type of project — residential, commercial, industrial, etc.</li>
-      <li>✓ Description of work needed (siding, cladding, repairs, etc.)</li>
-      <li>✓ Any photos, drawings, or plans (optional but helpful)</li>
-      <li>✓ Preferred timeline or start date</li>
-    </ul>
-    <div class="alt-contact">
-      <div class="alt-icon">📞</div>
-      <div class="alt-text"><p>Prefer to call us directly?</p><a href="tel:+14167415140">+1(416) 741-5140</a></div>
+</section>
+
+<section class="cta-section">
+  <div class="corb"></div><div class="corb"></div><div class="corb"></div>
+  <div class="cta-inner rv sc">
+    <h2>Prefer to Talk Directly?</h2>
+    <p>Our team is happy to discuss your project over the phone. Give us a call and we'll answer any questions you have.</p>
+    <div class="cta-btns">
+      <a href="contact.html" class="btn-solid">Contact Us</a>
+      <a href="tel:+14167415140" class="btn-outline">Call +1(416) 741-5140</a>
     </div>
   </div>
-</div></section>
-<section class="stats-band"><div class="stats-inner rv">
-  <div class="s-item"><div class="s-num">24h</div><div class="s-lbl">Average Quote Time</div></div>
-  <div class="s-item"><div class="s-num">100+</div><div class="s-lbl">Projects Quoted</div></div>
-  <div class="s-item"><div class="s-num">100%</div><div class="s-lbl">Free &amp; No Obligation</div></div>
-  <div class="s-item"><div class="s-num">GTA</div><div class="s-lbl">Regional Coverage</div></div>
-</div></section>
-<section class="cta-section"><div class="cta-inner rv"><h2>Prefer to Talk Directly?</h2><p>Our team is happy to discuss your project over the phone. Give us a call and we'll answer any questions you have.</p><div class="cta-btns"><a href="contact.html" class="btn-solid">Contact Us</a><a href="tel:+14167415140" class="btn-outline">Call +1(416) 741-5140</a></div></div></section>
+</section>
+
+<!-- FOOTER — updated: removed Products, added Blue Sky Supplies -->
 <footer class="footer">
   <div class="footer-inner">
     <div>
-      <div class="flogo"><img src="logo.jpg" alt="BlueSky"><span class="flogo-name">Blue Sky Siding <span>&amp; Cladding Inc.</span></span></div>
+      <div class="flogo"><img src="images/logo.jpg" alt="BlueSky"><span class="flogo-name">Blue Sky Siding <span>&amp; Cladding Inc.</span></span></div>
       <p class="fdesc">Leading provider of premium metal siding and cladding solutions. Quality materials, expert craftsmanship, outstanding results.</p>
     </div>
-    <div><h4>Navigation</h4><ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="bluskysupplies.html">Blue Sky Supplies</a></li>
-      <li><a href="careers.html">Careers</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-    </ul></div>
-    <div><h4>Project Gallery</h4>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:.2rem;">
-        <a href="gallery-1.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;"><img src="gallery-1.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></a>
-        <a href="gallery-2.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;"><img src="gallery-2.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></a>
-        <a href="gallery-3.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;"><img src="gallery-3.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></a>
-        <a href="gallery-4.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;"><img src="gallery-4.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></a>
-        <a href="gallery-5.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;"><img src="gallery-5.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></a>
-        <a href="gallery-6.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;"><img src="gallery-6.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></a></div>
+    <div>
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="bluskysupplies.html">Blue Sky Supplies</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
     </div>
-    <div><h4>Contact</h4><ul>
-      <li><a href="tel:+14167415140">+1(416) 741-5140</a></li>
-      <li><a href="mailto:info@blueskysiding.ca">info@blueskysiding.ca</a></li>
-      <li><a href="careers.html">Careers</a></li>
-      <li><a href="quote.html">Get a Quote</a></li>
-    </ul></div>
+    <div>
+      <h4>Project Gallery</h4>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:.2rem;">
+        <a href="images/gallery-1.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;"><img src="images/gallery-1.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;filter:brightness(.9);" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></a>
+        <a href="images/gallery-2.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;"><img src="images/gallery-2.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;filter:brightness(.9);" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></a>
+        <a href="images/gallery-3.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;"><img src="images/gallery-3.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;filter:brightness(.9);" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></a>
+        <a href="images/gallery-4.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;"><img src="images/gallery-4.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;filter:brightness(.9);" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></a>
+        <a href="images/gallery-5.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;"><img src="images/gallery-5.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;filter:brightness(.9);" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></a>
+        <a href="images/gallery-6.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;"><img src="images/gallery-6.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;filter:brightness(.9);" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></a>
+      </div>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+14167415140">+1(416) 741-5140</a></li>
+        <li><a href="mailto:info@blueskysiding.ca">info@blueskysiding.ca</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="quote.html">Get a Quote</a></li>
+      </ul>
+    </div>
   </div>
   <div class="fcopy">&copy; 2022 BlueSky Siding &amp; Cladding Inc. All rights reserved.</div>
 </footer>
+
 <script>
-window.addEventListener("load",function(){setTimeout(function(){var l=document.getElementById("loader");l.classList.add("out");setTimeout(function(){l.style.display="none";},700);},2100);});
-var ro=new IntersectionObserver(function(entries){entries.forEach(function(e,i){if(e.isIntersecting){setTimeout(function(){e.target.classList.add("on");},i*70);ro.unobserve(e.target);}});},{threshold:.1});
-document.querySelectorAll(".rv").forEach(function(el){ro.observe(el);});
-window.addEventListener("scroll",function(){var nb=document.querySelector(".navbar");if(nb)nb.style.boxShadow=window.scrollY>=40?"0 4px 20px rgba(0,0,0,.1)":"0 1px 20px rgba(0,0,0,.06)";});
-</script>
-<script>
+window.addEventListener('load', function () {
+  setTimeout(function () {
+    var loader = document.getElementById('loader');
+    loader.classList.add('out');
+    setTimeout(function () { loader.style.display = 'none'; }, 750);
+  }, 2100);
+});
+var revealObserver = new IntersectionObserver(function (entries) {
+  entries.forEach(function (entry, i) {
+    if (entry.isIntersecting) {
+      setTimeout(function () { entry.target.classList.add('on'); }, i * 70);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.rv').forEach(function (el) { revealObserver.observe(el); });
+window.addEventListener('scroll', function () {
+  document.querySelector('.navbar').style.boxShadow =
+    window.scrollY >= 40 ? '0 4px 20px rgba(0,0,0,.1)' : '0 1px 20px rgba(0,0,0,.06)';
+});
 function copyEmail() {
-  navigator.clipboard.writeText("info@blueskysiding.ca").then(function() {
-    var btn = document.getElementById("copyBtn");
-    btn.textContent = "Copied!";
-    btn.classList.add("copied");
-    setTimeout(function() { btn.textContent = "Copy"; btn.classList.remove("copied"); }, 2000);
+  navigator.clipboard.writeText('info@blueskysiding.ca').then(function () {
+    var btn = document.getElementById('copyBtn');
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(function () {
+      btn.textContent = 'Copy';
+      btn.classList.remove('copied');
+    }, 2000);
   });
 }
 </script>
-</body></html>
+</body>
+</html>

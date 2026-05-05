@@ -1,241 +1,568 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Services — BlueSky Siding &amp; Cladding Inc.</title>
-<style>@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap');
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
-body{font-family:"DM Sans",Georgia,sans-serif;color:#1A2D42;background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
-:root{--navy:#0B1F3A;--sky:#2C7BE5;--skyL:#4F9EF8;--steel:#4A5D72;--cream:#F5F7FA;--muted:#6B7E92;}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — BlueSky Siding & Cladding Inc.</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap');
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',Georgia,sans-serif;color:#1A2D42;background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+:root{
+  --navy:#0B1F3A;
+  --sky:#2C7BE5;
+  --skyL:#4F9EF8;
+  --steel:#4A5D72;
+  --cream:#F5F7FA;
+  --muted:#6B7E92;
+  --red:#D42B2B;
+  --maple:#C8102E;
+}
+
+/* LOADER */
 #loader{position:fixed;inset:0;background:var(--navy);z-index:9000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;}
-.ld-text{font-family:"Playfair Display",serif;font-size:1.8rem;font-weight:700;color:#fff;opacity:0;animation:fadeIn .6s .2s ease forwards;}
-.ld-text span{color:var(--skyL);}.ld-track{width:200px;height:2px;background:rgba(255,255,255,.12);border-radius:2px;overflow:hidden;opacity:0;animation:fadeIn .6s .4s ease forwards;}
+.ld-text{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#fff;opacity:0;animation:fadeIn .6s .2s ease forwards;}
+.ld-text span{color:var(--skyL);}
+.ld-track{width:200px;height:2px;background:rgba(255,255,255,.12);border-radius:2px;overflow:hidden;opacity:0;animation:fadeIn .6s .4s ease forwards;}
 .ld-bar{height:100%;width:0%;background:linear-gradient(90deg,var(--sky),var(--skyL));animation:ldBar 1.6s .5s ease forwards;}
-@keyframes ldBar{to{width:100%;}}@keyframes fadeIn{to{opacity:1;}}
-#loader.out{animation:ldOut .7s ease forwards;}@keyframes ldOut{to{transform:translateY(-100%);opacity:0;}}
+@keyframes ldBar{to{width:100%;}}
+@keyframes fadeIn{to{opacity:1;}}
+#loader.out{animation:ldOut .7s ease forwards;}
+@keyframes ldOut{to{transform:translateY(-100%);opacity:0;}}
+
+/* NAVBAR */
 .navbar{position:fixed;top:0;width:100%;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(11,31,58,.08);box-shadow:0 1px 20px rgba(0,0,0,.06);z-index:500;transform:translateY(-100%);animation:navIn .6s 2.1s ease forwards;}
 @keyframes navIn{to{transform:translateY(0);}}
 .nav-inner{max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.85rem 2rem;}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}.logo img{height:52px;}
-.logo-name{font-weight:700;font-size:1.05rem;color:var(--navy);line-height:1.3;}.logo-name span{color:var(--sky);}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo img{height:52px;}
+.logo-name{font-weight:700;font-size:1.05rem;color:var(--navy);line-height:1.3;}
+.logo-name span{color:var(--sky);}
 .nav-links{display:flex;align-items:center;gap:2rem;list-style:none;}
 .nav-links a{text-decoration:none;font-size:.9rem;font-weight:500;color:var(--steel);transition:color .2s;position:relative;}
-.nav-links a::after{content:"";position:absolute;bottom:-3px;left:0;right:0;height:1.5px;background:var(--sky);transform:scaleX(0);transform-origin:right;transition:transform .3s;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1.5px;background:var(--sky);transform:scaleX(0);transform-origin:right;transition:transform .3s;}
 .nav-links a:hover,.nav-links a.active{color:var(--sky);}
 .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);transform-origin:left;}
 .nav-cta{background:var(--sky)!important;color:#fff!important;padding:.6rem 1.4rem;border-radius:6px;font-weight:600!important;}
-.nav-cta::after{display:none!important;}.nav-cta:hover{background:#1a6dd0!important;}
-.hero{margin-top:80px;min-height:70vh;background:var(--navy);position:relative;overflow:hidden;display:flex;align-items:center;}
-.hero-mesh{position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 65% 45%,rgba(44,123,229,.22) 0%,transparent 65%);}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(44,123,229,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(44,123,229,.07) 1px,transparent 1px);background-size:60px 60px;}
-.hero-inner{position:relative;z-index:2;max-width:1320px;margin:0 auto;width:100%;padding:6rem 2rem 5rem;}
+.nav-cta::after{display:none!important;}
+.nav-cta:hover{background:#1a6dd0!important;transform:translateY(-2px)!important;box-shadow:0 6px 20px rgba(44,123,229,.35)!important;}
+
+/* HERO */
+.hero{margin-top:80px;min-height:72vh;background:var(--navy);position:relative;overflow:hidden;display:flex;align-items:center;}
+.hero-mesh{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 80% 70% at 65% 45%,rgba(44,123,229,.22) 0%,transparent 65%),radial-gradient(ellipse 50% 60% at 5% 85%,rgba(79,158,248,.12) 0%,transparent 55%);animation:meshShift 12s ease-in-out infinite alternate;}
+@keyframes meshShift{0%{filter:hue-rotate(0deg) brightness(1);}100%{filter:hue-rotate(15deg) brightness(1.08);}}
+.hero-grid{position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(44,123,229,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(44,123,229,.07) 1px,transparent 1px);background-size:60px 60px;animation:gridDrift 20s linear infinite;}
+@keyframes gridDrift{0%{background-position:0 0;}100%{background-position:60px 60px;}}
+
+.maple-accent{position:absolute;right:8%;top:50%;transform:translateY(-50%);z-index:1;opacity:.04;pointer-events:none;}
+.maple-accent svg{width:320px;height:320px;fill:#fff;}
+
+.hero-inner{position:relative;z-index:2;max-width:1320px;margin:0 auto;width:100%;padding:6rem 2rem 5rem;display:grid;grid-template-columns:1.1fr .9fr;gap:5rem;align-items:center;}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--skyL);margin-bottom:1.2rem;opacity:0;transform:translateX(-30px);animation:sRight .7s 2.2s ease forwards;}
-.hero-eyebrow::before{content:"";width:28px;height:2px;background:var(--skyL);display:block;}
+.hero-eyebrow::before{content:'';width:28px;height:2px;background:var(--skyL);display:block;}
 @keyframes sRight{to{opacity:1;transform:translateX(0);}}
-.hero h1{font-family:"Playfair Display",serif;font-size:clamp(2.4rem,4vw,3.8rem);font-weight:700;color:#fff;line-height:1.12;margin-bottom:1.4rem;opacity:0;transform:translateY(40px);animation:sUp .8s 2.35s ease forwards;}
-.hero h1 em{font-style:italic;color:var(--skyL);}@keyframes sUp{to{opacity:1;transform:translateY(0);}}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4vw,3.8rem);font-weight:700;color:#fff;line-height:1.12;margin-bottom:1.4rem;opacity:0;transform:translateY(40px);animation:sUp .8s 2.35s ease forwards;}
+.hero h1 em{font-style:italic;color:var(--skyL);}
+@keyframes sUp{to{opacity:1;transform:translateY(0);}}
 .hero-desc{font-size:1.05rem;color:rgba(255,255,255,.65);line-height:1.85;max-width:500px;opacity:0;transform:translateY(30px);animation:sUp .8s 2.5s ease forwards;}
+.hero-badges{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2.5rem;opacity:0;animation:sUp .8s 2.65s ease forwards;}
+.badge{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.8);font-size:.8rem;font-weight:500;padding:.45rem 1rem;border-radius:50px;transition:background .3s,border-color .3s;}
+.badge:hover{background:rgba(44,123,229,.2);border-color:rgba(44,123,229,.4);}
+
+.hero-visual{opacity:0;transform:translateX(50px);animation:sLeft .9s 2.4s ease forwards;}
+@keyframes sLeft{to{opacity:1;transform:translateX(0);}}
+.visual-panel{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:2.2rem;position:relative;overflow:hidden;}
+.visual-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--sky),var(--skyL),#38b6ff);}
+.vp-title{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1.6rem;}
+.vp-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.6rem;}
+.vp-stat{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:1.1rem 1rem;text-align:center;transition:background .3s,border-color .3s;}
+.vp-stat:hover{background:rgba(44,123,229,.12);border-color:rgba(44,123,229,.25);}
+.vp-stat-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--skyL);line-height:1;}
+.vp-stat-lbl{font-size:.76rem;color:rgba(255,255,255,.45);margin-top:.3rem;font-weight:500;}
+.vp-divider{height:1px;background:rgba(255,255,255,.08);margin:0 0 1.4rem;}
+.vp-list{display:flex;flex-direction:column;gap:.7rem;}
+.vp-item{display:flex;align-items:center;gap:.9rem;font-size:.88rem;color:rgba(255,255,255,.7);font-weight:500;}
+.vp-dot{width:7px;height:7px;min-width:7px;background:var(--skyL);border-radius:50%;box-shadow:0 0 8px rgba(79,158,248,.5);}
+
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeIn 1s 3.2s ease forwards;}
+.scroll-hint span{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);}
+.scroll-mouse{width:22px;height:34px;border:1.5px solid rgba(255,255,255,.25);border-radius:11px;display:flex;align-items:flex-start;justify-content:center;padding-top:6px;}
+.scroll-wheel{width:3px;height:8px;background:var(--skyL);border-radius:2px;animation:wheel 1.5s ease-in-out infinite;}
+@keyframes wheel{0%{transform:translateY(0);opacity:1;}100%{transform:translateY(12px);opacity:0;}}
+
+/* MARQUEE */
 .marquee{background:var(--sky);padding:.9rem 0;overflow:hidden;}
 .marquee-track{display:flex;gap:3rem;width:max-content;animation:mroll 25s linear infinite;}
 @keyframes mroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 .marquee-item{font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.9);white-space:nowrap;display:flex;align-items:center;gap:1.5rem;}
 .mdot{width:5px;height:5px;background:rgba(255,255,255,.5);border-radius:50%;display:inline-block;}
-.section{padding:8rem 2rem;}.section-inner{max-width:1320px;margin:0 auto;}
-.sec-label{font-size:.76rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--sky);margin-bottom:1rem;}
-.sec-heading{font-family:"Playfair Display",serif;font-size:clamp(2rem,3vw,3rem);font-weight:700;color:var(--navy);line-height:1.15;margin-bottom:1.5rem;}
-.sec-heading em{font-style:italic;color:var(--sky);}
-.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
-.card{background:#fff;border-radius:16px;padding:2rem 1.8rem;border:1px solid rgba(11,31,58,.06);transition:border-color .3s,box-shadow .3s;}
-.card:hover{border-color:rgba(44,123,229,.18);box-shadow:0 20px 50px rgba(44,123,229,.1);}
-.card-icon{font-size:1.8rem;margin-bottom:1rem;}
-.card h3{font-family:"Playfair Display",serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:.6rem;}
-.card p{font-size:.9rem;color:var(--muted);line-height:1.8;}
-.cta-section{background:linear-gradient(135deg,#1056bb 0%,var(--sky) 60%,#38b6ff 100%);padding:7rem 2rem;text-align:center;}
-.cta-inner{max-width:720px;margin:0 auto;}
-.cta-inner h2{font-family:"Playfair Display",serif;font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:700;color:#fff;margin-bottom:1.2rem;line-height:1.15;}
-.cta-inner p{font-size:1.05rem;color:rgba(255,255,255,.8);line-height:1.8;margin-bottom:2.8rem;}
-.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
-.btn-solid{display:inline-block;background:#fff;color:var(--sky);padding:.95rem 2.4rem;border-radius:8px;font-weight:700;font-size:.95rem;text-decoration:none;box-shadow:0 6px 30px rgba(0,0,0,.2);transition:transform .2s;}
-.btn-solid:hover{transform:translateY(-3px);}
-.btn-outline{display:inline-block;background:transparent;color:#fff;padding:.95rem 2.4rem;border-radius:8px;font-weight:700;font-size:.95rem;text-decoration:none;border:2px solid rgba(255,255,255,.5);transition:border-color .2s,background .2s,transform .2s;}
-.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.1);transform:translateY(-3px);}
-.footer{background:var(--cream);border-top:1px solid rgba(0,0,0,.06);padding:4.5rem 2rem 2rem;}
-.footer-inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
-.flogo{display:flex;align-items:center;gap:10px;margin-bottom:1rem;}.flogo img{height:50px;}
-.flogo-name{font-weight:700;font-size:.95rem;color:var(--navy);}.flogo-name span{color:var(--sky);}
-.fdesc{font-size:.9rem;color:var(--muted);line-height:1.8;}
-.footer h4{font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:1.4rem;}
-.footer ul{list-style:none;}.footer ul li{margin-bottom:.75rem;}
-.footer ul a{font-size:.9rem;color:var(--muted);text-decoration:none;transition:color .2s;}.footer ul a:hover{color:var(--sky);}
-.fcopy{border-top:1px solid rgba(0,0,0,.08);padding-top:1.5rem;font-size:.85rem;color:var(--muted);text-align:center;}
-.rv{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease;}.rv.on{opacity:1;transform:none;}
-.rv.l{transform:translateX(-40px);}.rv.r{transform:translateX(40px);}
-.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
-@media(max-width:768px){.nav-links{display:none;}.card-grid{grid-template-columns:1fr;}.footer-inner{grid-template-columns:1fr 1fr;}.cta-btns{flex-direction:column;align-items:center;}}
-.hero-inner{padding:6rem 2rem 5rem;max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:5rem;align-items:center;}
-.hero-badges{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2.5rem;opacity:0;animation:sUp .8s 2.65s ease forwards;}
-.badge{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.8);font-size:.8rem;font-weight:500;padding:.45rem 1rem;border-radius:50px;}
-.services-wrap{background:var(--cream);padding:8rem 2rem;}.services-inner{max-width:1320px;margin:0 auto;}
+
+/* SERVICES */
+.services-wrap{background:var(--cream);padding:8rem 2rem;position:relative;overflow:hidden;}
+.services-wrap::before{content:'';position:absolute;bottom:-150px;right:-150px;width:500px;height:500px;background:radial-gradient(circle,rgba(44,123,229,.05),transparent 70%);border-radius:50%;animation:driftOrb 18s ease-in-out infinite alternate;}
+@keyframes driftOrb{0%{transform:translate(0,0);}100%{transform:translate(-80px,-60px) scale(1.2);}}
+.services-inner{max-width:1320px;margin:0 auto;position:relative;z-index:1;}
 .sec-header{margin-bottom:4rem;}
-.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-bottom:3rem;}
-.pillar{background:#fff;border-radius:18px;border:1px solid rgba(11,31,58,.07);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .3s,border-color .3s;}
+.sec-label{font-size:.76rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--sky);margin-bottom:1rem;display:flex;align-items:center;gap:8px;}
+.sec-label::after{content:'';width:40px;height:1px;background:var(--sky);opacity:.4;}
+.sec-header h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,3vw,3rem);font-weight:700;color:var(--navy);line-height:1.15;margin-bottom:1rem;}
+.sec-header p{font-size:1.05rem;color:var(--muted);max-width:560px;line-height:1.8;}
+
+.canada-strip{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;}
+.canada-strip .cs-line{flex:1;height:2px;background:linear-gradient(90deg,var(--maple),transparent);}
+.canada-strip .cs-leaf{font-size:1rem;}
+
+/* PILLARS */
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-bottom:5rem;}
+.pillar{background:#fff;border-radius:18px;border:1px solid rgba(11,31,58,.07);overflow:hidden;display:flex;flex-direction:column;
+  opacity:0;transform:translateY(36px);
+  transition:opacity .6s ease,transform .6s ease,box-shadow .3s,border-color .3s;}
+.pillar.on{opacity:1;transform:translateY(0);}
 .pillar:hover{box-shadow:0 24px 60px rgba(44,123,229,.12);border-color:rgba(44,123,229,.2);}
 .pillar-head{padding:1.6rem 1.6rem 1.4rem;border-bottom:1px solid rgba(11,31,58,.06);position:relative;}
-.pillar-head::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--sky),var(--skyL));transform:scaleX(0);transform-origin:left;transition:transform .4s;}
+.pillar-head::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--sky),var(--skyL));transform:scaleX(0);transform-origin:left;transition:transform .4s ease;}
 .pillar:hover .pillar-head::before{transform:scaleX(1);}
-.pillar-icon{font-size:1.6rem;margin-bottom:1rem;}
-.pillar-head h3{font-family:"Playfair Display",serif;font-size:1.08rem;font-weight:700;color:var(--navy);line-height:1.3;margin-bottom:.5rem;}
+.pillar-num{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:700;line-height:1;color:var(--navy);opacity:.07;position:absolute;top:.8rem;right:1.2rem;transition:opacity .3s;}
+.pillar:hover .pillar-num{opacity:.14;}
+.pillar-icon{width:52px;height:52px;border-radius:13px;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1rem;transition:transform .4s cubic-bezier(.34,1.56,.64,1),background .3s;}
+.pillar:hover .pillar-icon{transform:rotate(-8deg) scale(1.1);background:var(--sky);}
+.pillar-head h3{font-family:'Playfair Display',serif;font-size:1.08rem;font-weight:700;color:var(--navy);line-height:1.3;margin-bottom:.5rem;}
 .pillar-head p{font-size:.85rem;color:var(--muted);line-height:1.7;}
-.pillar-body{padding:1.4rem 1.6rem;flex-grow:1;}
+.pillar-body{padding:1.4rem 1.6rem;flex-grow:1;display:flex;flex-direction:column;}
 .sub-label{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sky);margin-bottom:.9rem;}
-.sub-list{list-style:none;}
-.sub-list li{display:flex;align-items:flex-start;gap:.7rem;padding:.45rem 0;border-bottom:1px solid rgba(11,31,58,.05);font-size:.88rem;color:var(--steel);line-height:1.5;}
+.sub-list{list-style:none;flex-grow:1;}
+.sub-list li{display:flex;align-items:flex-start;gap:.7rem;padding:.45rem 0;border-bottom:1px solid rgba(11,31,58,.05);font-size:.88rem;color:var(--steel);line-height:1.5;transition:color .2s;}
 .sub-list li:last-child{border-bottom:none;}
-.sub-dot{width:5px;height:5px;min-width:5px;background:var(--skyL);border-radius:50%;margin-top:.45rem;}
+.sub-list li:hover{color:var(--navy);}
+.sub-dot{width:5px;height:5px;min-width:5px;background:var(--skyL);border-radius:50%;margin-top:.45rem;transition:background .2s;}
+.sub-list li:hover .sub-dot{background:var(--sky);}
 .pillar-foot{padding:1.2rem 1.6rem;border-top:1px solid rgba(11,31,58,.05);background:var(--cream);}
-.pillar-link{display:inline-flex;align-items:center;gap:.4rem;color:var(--sky);text-decoration:none;font-weight:600;font-size:.85rem;transition:gap .3s;}
-.pillar:hover .pillar-link{gap:.85rem;}
-.process{background:var(--navy);padding:8rem 2rem;}.process-inner{max-width:1320px;margin:0 auto;}
+.pillar-link{display:inline-flex;align-items:center;gap:.4rem;color:var(--sky);text-decoration:none;font-weight:600;font-size:.85rem;transition:gap .3s cubic-bezier(.34,1.56,.64,1),color .2s;}
+.pillar:hover .pillar-link{gap:.85rem;color:#1a6dd0;}
+.arrow{transition:transform .3s cubic-bezier(.34,1.56,.64,1);}
+.pillar:hover .arrow{transform:translateX(4px);}
+
+/* PROCESS */
+.process{background:var(--navy);padding:8rem 2rem;position:relative;overflow:hidden;}
+.process::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(44,123,229,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(44,123,229,.06) 1px,transparent 1px);background-size:55px 55px;animation:gridDrift 28s linear infinite;}
+.process::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 80% 40%,rgba(44,123,229,.14) 0%,transparent 60%);}
+.process-inner{max-width:1320px;margin:0 auto;position:relative;z-index:2;}
 .process-lbl{font-size:.76rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--skyL);margin-bottom:1rem;}
-.process h2{font-family:"Playfair Display",serif;font-size:clamp(2rem,3vw,3rem);font-weight:700;color:#fff;line-height:1.15;margin-bottom:1rem;}
+.process h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,3vw,3rem);font-weight:700;color:#fff;line-height:1.15;margin-bottom:1rem;}
 .process-sub{font-size:1rem;color:rgba(255,255,255,.55);max-width:480px;line-height:1.8;margin-bottom:4rem;}
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
-.step{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:2rem 1.6rem;transition:background .3s,transform .3s;}
-.step:hover{background:rgba(44,123,229,.1);transform:translateY(-5px);}
-.step-num{font-family:"Playfair Display",serif;font-size:3rem;font-weight:700;line-height:1;background:linear-gradient(135deg,var(--skyL),#a0d4ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem;opacity:.4;transition:opacity .3s;}
+.step{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:2rem 1.6rem;position:relative;overflow:hidden;transition:background .3s,border-color .3s,transform .3s;}
+.step::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--sky),var(--skyL));transform:scaleX(0);transform-origin:left;transition:transform .4s;}
+.step:hover{background:rgba(44,123,229,.1);border-color:rgba(44,123,229,.25);transform:translateY(-5px);}
+.step:hover::before{transform:scaleX(1);}
+.step-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;line-height:1;background:linear-gradient(135deg,var(--skyL),#a0d4ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem;opacity:.3;transition:opacity .3s;}
 .step:hover .step-num{opacity:1;}
-.step h4{font-family:"Playfair Display",serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.6rem;}
+.step h4{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.6rem;}
 .step p{font-size:.88rem;color:rgba(255,255,255,.5);line-height:1.75;}
-@media(max-width:1200px){.pillars{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:1024px){.steps{grid-template-columns:repeat(2,1fr)};.hero-inner{grid-template-columns:1fr}}
-@media(max-width:480px){.steps{grid-template-columns:1fr}}
+
+/* CTA */
+.cta-section{background:linear-gradient(135deg,#1056bb 0%,var(--sky) 60%,#38b6ff 100%);padding:7rem 2rem;text-align:center;position:relative;overflow:hidden;}
+.cta-section::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(-45deg,transparent,transparent 28px,rgba(255,255,255,.04) 28px,rgba(255,255,255,.04) 29px);}
+.corb{position:absolute;border-radius:50%;background:rgba(255,255,255,.06);animation:orbF linear infinite;}
+.corb:nth-child(1){width:320px;height:320px;top:-80px;left:-80px;animation-duration:18s;}
+.corb:nth-child(2){width:220px;height:220px;bottom:-60px;right:-50px;animation-duration:14s;}
+.corb:nth-child(3){width:160px;height:160px;top:40%;right:12%;animation-duration:22s;}
+@keyframes orbF{0%,100%{transform:translateY(0) rotate(0deg);}33%{transform:translateY(-30px) rotate(120deg);}66%{transform:translateY(20px) rotate(240deg);}}
+.cta-inner{position:relative;z-index:2;max-width:720px;margin:0 auto;}
+.cta-inner h2{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:700;color:#fff;margin-bottom:1.2rem;line-height:1.15;}
+.cta-inner p{font-size:1.05rem;color:rgba(255,255,255,.8);line-height:1.8;margin-bottom:2.8rem;}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.btn-solid{display:inline-block;background:#fff;color:var(--sky);padding:.95rem 2.4rem;border-radius:8px;font-weight:700;font-size:.95rem;text-decoration:none;box-shadow:0 6px 30px rgba(0,0,0,.2);transition:transform .2s,box-shadow .2s;}
+.btn-solid:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 12px 40px rgba(0,0,0,.3);}
+.btn-outline{display:inline-block;background:transparent;color:#fff;padding:.95rem 2.4rem;border-radius:8px;font-weight:700;font-size:.95rem;text-decoration:none;border:2px solid rgba(255,255,255,.5);transition:border-color .2s,background .2s,transform .2s;}
+.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.1);transform:translateY(-3px);}
+
+/* FOOTER */
+.footer{background:var(--cream);border-top:1px solid rgba(0,0,0,.06);padding:4.5rem 2rem 2rem;}
+.footer-inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.flogo{display:flex;align-items:center;gap:10px;margin-bottom:1rem;}
+.flogo img{height:50px;}
+.flogo-name{font-weight:700;font-size:.95rem;color:var(--navy);}
+.flogo-name span{color:var(--sky);}
+.fdesc{font-size:.9rem;color:var(--muted);line-height:1.8;}
+.footer h4{font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:1.4rem;}
+.footer ul{list-style:none;}
+.footer ul li{margin-bottom:.75rem;}
+.footer ul a{font-size:.9rem;color:var(--muted);text-decoration:none;transition:color .2s,padding-left .2s;}
+.footer ul a:hover{color:var(--sky);padding-left:4px;}
+.fcopy{border-top:1px solid rgba(0,0,0,.08);padding-top:1.5rem;font-size:.85rem;color:var(--muted);text-align:center;}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease;}
+.rv.l{transform:translateX(-40px);}
+.rv.r{transform:translateX(40px);}
+.rv.sc{transform:scale(.92);}
+.rv.on{opacity:1;transform:none;}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}.d4{transition-delay:.4s;}
+
+/* RESPONSIVE */
+@media(max-width:1200px){.pillars{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:1024px){.steps{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .hero-inner{grid-template-columns:1fr;}
+  .hero-visual{display:none;}
+  .pillars{grid-template-columns:1fr;}
+  .footer-inner{grid-template-columns:1fr 1fr;}
+  .cta-btns{flex-direction:column;align-items:center;}
+}
+@media(max-width:480px){.steps{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
-<div id="loader"><div class="ld-text">Blue Sky <span>Siding</span></div><div class="ld-track"><div class="ld-bar"></div></div></div>
+
+<div id="loader">
+  <div class="ld-text">Blue Sky <span>Siding</span></div>
+  <div class="ld-track"><div class="ld-bar"></div></div>
+</div>
+
+<!-- NAVBAR — updated: removed Products, added Blue Sky Supplies -->
 <nav class="navbar">
   <div class="nav-inner">
-    <a href="index.html" class="logo"><img src="logo.jpg" alt="BlueSky Siding"><span class="logo-name">Blue Sky Siding <span>&amp; Cladding Inc.</span></span></a>
-    <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html" class="active">Services</a></li><li><a href="bluskysupplies.html">Blue Sky Supplies</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact</a></li><li><a href="quote.html" class="nav-cta">Get a Quote</a></li></ul>
+    <a href="index.html" class="logo">
+      <img src="images/logo.jpg" alt="BlueSky Siding">
+      <span class="logo-name">Blue Sky Siding <span>&amp; Cladding Inc.</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="bluskysupplies.html">Blue Sky Supplies</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="quote.html" class="nav-cta">Get a Quote</a></li>
+    </ul>
   </div>
 </nav>
+
 <section class="hero">
-  <div class="hero-mesh"></div><div class="hero-grid"></div>
+  <div class="hero-mesh"></div>
+  <div class="hero-grid"></div>
+  <div class="maple-accent">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M50 5 L54 35 L68 20 L63 42 L85 35 L72 52 L90 55 L72 62 L80 80 L60 68 L55 95 L50 75 L45 95 L40 68 L20 80 L28 62 L10 55 L28 52 L15 35 L37 42 L32 20 L46 35 Z"/>
+    </svg>
+  </div>
   <div class="hero-inner">
     <div>
       <p class="hero-eyebrow">What We Do</p>
       <h1>Professional Services<br>Built for <em>Every Project.</em></h1>
-      <p class="hero-desc">From a single home to a large commercial complex — we deliver complete siding, cladding, and exterior envelope solutions across the Greater Toronto Area and Ontario.</p>
+      <p class="hero-desc">From a single home to a large commercial complex we deliver complete siding, cladding, and exterior envelope solutions across the Greater Toronto Area and Ontario.</p>
       <div class="hero-badges">
-        <span class="badge">Siding Installation</span><span class="badge">Exterior Cladding</span><span class="badge">Coping &amp; Flashing</span><span class="badge">Engineering Services</span>
+        <span class="badge">Siding Installation</span>
+        <span class="badge">Exterior Cladding</span>
+        <span class="badge">Coping &amp; Flashing</span>
+        <span class="badge">Engineering Services</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="visual-panel">
+        <p class="vp-title">Why Choose BlueSky</p>
+        <div class="vp-stats">
+          <div class="vp-stat">
+            <div class="vp-stat-num">100+</div>
+            <div class="vp-stat-lbl">Projects Completed</div>
+          </div>
+          <div class="vp-stat">
+            <div class="vp-stat-num">4+</div>
+            <div class="vp-stat-lbl">Years Experience</div>
+          </div>
+          <div class="vp-stat">
+            <div class="vp-stat-num">100%</div>
+            <div class="vp-stat-lbl">Client Satisfaction</div>
+          </div>
+          <div class="vp-stat">
+            <div class="vp-stat-num">GTA</div>
+            <div class="vp-stat-lbl">Regional Coverage</div>
+          </div>
+        </div>
+        <div class="vp-divider"></div>
+        <div class="vp-list">
+          <div class="vp-item"><span class="vp-dot"></span><span>Licensed &amp; Fully Insured</span></div>
+          <div class="vp-item"><span class="vp-dot"></span><span>Certified Installers On Every Job</span></div>
+          <div class="vp-item"><span class="vp-dot"></span><span>Full Project Management A–Z</span></div>
+          <div class="vp-item"><span class="vp-dot"></span><span>Free Consultations &amp; Quotes</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <div class="marquee-item">Siding Installation <span class="mdot"></span></div>
+    <div class="marquee-item">Exterior Cladding <span class="mdot"></span></div>
+    <div class="marquee-item">Coping &amp; Flashing <span class="mdot"></span></div>
+    <div class="marquee-item">Engineering Services <span class="mdot"></span></div>
+    <div class="marquee-item">Architectural Drawings <span class="mdot"></span></div>
+    <div class="marquee-item">Metal Coating <span class="mdot"></span></div>
+    <div class="marquee-item">Project Management <span class="mdot"></span></div>
+    <div class="marquee-item">Commercial Projects <span class="mdot"></span></div>
+    <div class="marquee-item">Siding Installation <span class="mdot"></span></div>
+    <div class="marquee-item">Exterior Cladding <span class="mdot"></span></div>
+    <div class="marquee-item">Coping &amp; Flashing <span class="mdot"></span></div>
+    <div class="marquee-item">Engineering Services <span class="mdot"></span></div>
+    <div class="marquee-item">Architectural Drawings <span class="mdot"></span></div>
+    <div class="marquee-item">Metal Coating <span class="mdot"></span></div>
+    <div class="marquee-item">Project Management <span class="mdot"></span></div>
+    <div class="marquee-item">Commercial Projects <span class="mdot"></span></div>
+  </div>
+</div>
+
+<section class="services-wrap">
+  <div class="services-inner">
+    <div class="sec-header rv l">
+      <p class="sec-label">Our Services</p>
+      <h2>Four Pillars of Exterior<br>Excellence Done Right.</h2>
+      <p>Comprehensive exterior solutions for every project type across Ontario residential or commercial, small or large. Our four core service areas cover everything your building envelope needs.</p>
+    </div>
+
+    <div class="pillars">
+
+      <div class="pillar">
+        <div class="pillar-head">
+          <div class="pillar-num">01</div>
+          <div class="pillar-icon">🏗️</div>
+          <h3>Siding Installation &amp; Replacement</h3>
+          <p>Expert installation and full replacement across all residential and commercial siding systems built to last Ontario's climate.</p>
+        </div>
+        <div class="pillar-body">
+          <p class="sub-label">Includes</p>
+          <ul class="sub-list">
+            <li><span class="sub-dot"></span>New siding installation</li>
+            <li><span class="sub-dot"></span>Full siding replacement</li>
+            <li><span class="sub-dot"></span>Vinyl siding</li>
+            <li><span class="sub-dot"></span>Fiber cement siding</li>
+            <li><span class="sub-dot"></span>Metal siding</li>
+            <li><span class="sub-dot"></span>Siding repairs &amp; maintenance</li>
+            <li><span class="sub-dot"></span>Metal siding coating</li>
+          </ul>
+        </div>
+        <div class="pillar-foot">
+          <a href="quote.html" class="pillar-link">Get a Quote <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-head">
+          <div class="pillar-num">02</div>
+          <div class="pillar-icon">🏢</div>
+          <h3>Exterior Cladding Systems</h3>
+          <p>Modern cladding systems that enhance aesthetics and weather protection with premium, long-lasting panel materials.</p>
+        </div>
+        <div class="pillar-body">
+          <p class="sub-label">Includes</p>
+          <ul class="sub-list">
+            <li><span class="sub-dot"></span>Metal panel systems</li>
+            <li><span class="sub-dot"></span>Aluminum composite panels</li>
+            <li><span class="sub-dot"></span>Custom cladding design</li>
+            <li><span class="sub-dot"></span>Custom aluminum &amp; copper work</li>
+            <li><span class="sub-dot"></span>Residential &amp; commercial cladding</li>
+            <li><span class="sub-dot"></span>Multi-residential projects</li>
+          </ul>
+        </div>
+        <div class="pillar-foot">
+          <a href="quote.html" class="pillar-link">Get a Quote <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-head">
+          <div class="pillar-num">03</div>
+          <div class="pillar-icon">🛡️</div>
+          <h3>Coping &amp; Flashing Systems</h3>
+          <p>Essential waterproofing and weatherproofing systems to keep your building envelope watertight, durable, and code-compliant.</p>
+        </div>
+        <div class="pillar-body">
+          <p class="sub-label">Includes</p>
+          <ul class="sub-list">
+            <li><span class="sub-dot"></span>Coping systems</li>
+            <li><span class="sub-dot"></span>Flashing installation</li>
+            <li><span class="sub-dot"></span>Caulking &amp; waterproofing</li>
+            <li><span class="sub-dot"></span>Parapet wall coping</li>
+            <li><span class="sub-dot"></span>Window &amp; door flashing</li>
+            <li><span class="sub-dot"></span>Inspection &amp; maintenance</li>
+          </ul>
+        </div>
+        <div class="pillar-foot">
+          <a href="quote.html" class="pillar-link">Get a Quote <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-head">
+          <div class="pillar-num">04</div>
+          <div class="pillar-icon">📐</div>
+          <h3>Engineering Services</h3>
+          <p>Complete technical and design support services from concept drawings through to project completion and hand-off.</p>
+        </div>
+        <div class="pillar-body">
+          <p class="sub-label">Includes</p>
+          <ul class="sub-list">
+            <li><span class="sub-dot"></span>Architectural drawings</li>
+            <li><span class="sub-dot"></span>Shop drawings</li>
+            <li><span class="sub-dot"></span>As-built packages</li>
+            <li><span class="sub-dot"></span>Consulting services</li>
+            <li><span class="sub-dot"></span>Design &amp; drawing services</li>
+            <li><span class="sub-dot"></span>Project coordination &amp; management</li>
+          </ul>
+        </div>
+        <div class="pillar-foot">
+          <a href="quote.html" class="pillar-link">Get a Quote <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="process-inner">
+    <p class="process-lbl rv">How It Works</p>
+    <h2 class="rv d1">Our Simple 4-Step Process</h2>
+    <p class="process-sub rv d2">From first call to final inspection here's exactly how we get your project done right, every time.</p>
+    <div class="steps">
+      <div class="step rv d1">
+        <div class="step-num">01</div>
+        <h4>Consultation</h4>
+        <p>We start with a free consultation to understand your scope, goals, timeline, and budget.</p>
+      </div>
+      <div class="step rv d2">
+        <div class="step-num">02</div>
+        <h4>Design &amp; Quote</h4>
+        <p>Our team prepares detailed drawings, material recommendations, and a transparent project quote.</p>
+      </div>
+      <div class="step rv d3">
+        <div class="step-num">03</div>
+        <h4>Installation</h4>
+        <p>Certified installers execute the work with precision, keeping the site clean and on schedule.</p>
+      </div>
+      <div class="step rv d4">
+        <div class="step-num">04</div>
+        <h4>Final Inspection</h4>
+        <p>We walk through the completed project with you to ensure every detail meets our high standards.</p>
       </div>
     </div>
   </div>
 </section>
-<div class="marquee"><div class="marquee-track">
-  <div class="marquee-item">Siding Installation <span class="mdot"></span></div><div class="marquee-item">Exterior Cladding <span class="mdot"></span></div>
-  <div class="marquee-item">Coping &amp; Flashing <span class="mdot"></span></div><div class="marquee-item">Engineering Services <span class="mdot"></span></div>
-  <div class="marquee-item">Architectural Drawings <span class="mdot"></span></div><div class="marquee-item">Metal Coating <span class="mdot"></span></div>
-  <div class="marquee-item">Project Management <span class="mdot"></span></div><div class="marquee-item">Commercial Projects <span class="mdot"></span></div>
-  <div class="marquee-item">Siding Installation <span class="mdot"></span></div><div class="marquee-item">Exterior Cladding <span class="mdot"></span></div>
-  <div class="marquee-item">Coping &amp; Flashing <span class="mdot"></span></div><div class="marquee-item">Engineering Services <span class="mdot"></span></div>
-  <div class="marquee-item">Architectural Drawings <span class="mdot"></span></div><div class="marquee-item">Metal Coating <span class="mdot"></span></div>
-  <div class="marquee-item">Project Management <span class="mdot"></span></div><div class="marquee-item">Commercial Projects <span class="mdot"></span></div>
-</div></div>
-<section class="services-wrap"><div class="services-inner">
-  <div class="sec-header rv l">
-    <p class="sec-label">Our Services</p>
-    <h2 style="font-family:Playfair Display,serif;font-size:clamp(2rem,3vw,3rem);font-weight:700;color:var(--navy);line-height:1.15;margin-bottom:1rem;">Four Pillars of Exterior<br>Excellence Done Right.</h2>
-    <p style="font-size:1.05rem;color:var(--muted);max-width:560px;line-height:1.8;">Comprehensive exterior solutions for every project type across Ontario — residential or commercial, small or large.</p>
-  </div>
-  <div class="pillars">
-    <div class="pillar">
-      <div class="pillar-head"><div class="pillar-icon">🏗️</div><h3>Siding Installation &amp; Replacement</h3><p>Expert installation and full replacement across all residential and commercial siding systems built to last Ontario's climate.</p></div>
-      <div class="pillar-body"><p class="sub-label">Includes</p><ul class="sub-list">
-        <li><span class="sub-dot"></span>New siding installation</li><li><span class="sub-dot"></span>Full siding replacement</li>
-        <li><span class="sub-dot"></span>Vinyl siding</li><li><span class="sub-dot"></span>Fiber cement siding</li>
-        <li><span class="sub-dot"></span>Metal siding</li><li><span class="sub-dot"></span>Siding repairs &amp; maintenance</li>
-        <li><span class="sub-dot"></span>Metal siding coating</li>
-      </ul></div>
-      <div class="pillar-foot"><a href="quote.html" class="pillar-link">Get a Quote →</a></div>
-    </div>
-    <div class="pillar">
-      <div class="pillar-head"><div class="pillar-icon">🏢</div><h3>Exterior Cladding Systems</h3><p>Modern cladding systems that enhance aesthetics and weather protection with premium, long-lasting panel materials.</p></div>
-      <div class="pillar-body"><p class="sub-label">Includes</p><ul class="sub-list">
-        <li><span class="sub-dot"></span>Metal panel systems</li><li><span class="sub-dot"></span>Aluminum composite panels</li>
-        <li><span class="sub-dot"></span>Custom cladding design</li><li><span class="sub-dot"></span>Custom aluminum &amp; copper work</li>
-        <li><span class="sub-dot"></span>Residential &amp; commercial cladding</li><li><span class="sub-dot"></span>Multi-residential projects</li>
-      </ul></div>
-      <div class="pillar-foot"><a href="quote.html" class="pillar-link">Get a Quote →</a></div>
-    </div>
-    <div class="pillar">
-      <div class="pillar-head"><div class="pillar-icon">🛡️</div><h3>Coping &amp; Flashing Systems</h3><p>Essential waterproofing and weatherproofing systems to keep your building envelope watertight, durable, and code-compliant.</p></div>
-      <div class="pillar-body"><p class="sub-label">Includes</p><ul class="sub-list">
-        <li><span class="sub-dot"></span>Coping systems</li><li><span class="sub-dot"></span>Flashing installation</li>
-        <li><span class="sub-dot"></span>Caulking &amp; waterproofing</li><li><span class="sub-dot"></span>Parapet wall coping</li>
-        <li><span class="sub-dot"></span>Window &amp; door flashing</li><li><span class="sub-dot"></span>Inspection &amp; maintenance</li>
-      </ul></div>
-      <div class="pillar-foot"><a href="quote.html" class="pillar-link">Get a Quote →</a></div>
-    </div>
-    <div class="pillar">
-      <div class="pillar-head"><div class="pillar-icon">📐</div><h3>Engineering Services</h3><p>Complete technical and design support services from concept drawings through to project completion and hand-off.</p></div>
-      <div class="pillar-body"><p class="sub-label">Includes</p><ul class="sub-list">
-        <li><span class="sub-dot"></span>Architectural drawings</li><li><span class="sub-dot"></span>Shop drawings</li>
-        <li><span class="sub-dot"></span>As-built packages</li><li><span class="sub-dot"></span>Consulting services</li>
-        <li><span class="sub-dot"></span>Design &amp; drawing services</li><li><span class="sub-dot"></span>Project coordination &amp; management</li>
-      </ul></div>
-      <div class="pillar-foot"><a href="quote.html" class="pillar-link">Get a Quote →</a></div>
+
+<section class="cta-section">
+  <div class="corb"></div><div class="corb"></div><div class="corb"></div>
+  <div class="cta-inner rv sc">
+    <h2>Ready to Start Your Project?</h2>
+    <p>Contact us today to discuss your siding and cladding needs. We're here to bring your vision to life proudly serving the GTA and all of Ontario.</p>
+    <div class="cta-btns">
+      <a href="quote.html" class="btn-solid">Request a Quote</a>
+      <a href="tel:+14167415140" class="btn-outline">Call +1(416) 741-5140</a>
     </div>
   </div>
-</div></section>
-<section class="process"><div class="process-inner">
-  <p class="process-lbl rv">How It Works</p>
-  <h2 class="rv d1">Our Simple 4-Step Process</h2>
-  <p class="process-sub rv d2">From first call to final inspection — here's exactly how we get your project done right, every time.</p>
-  <div class="steps">
-    <div class="step rv d1"><div class="step-num">01</div><h4>Consultation</h4><p>We start with a free consultation to understand your scope, goals, timeline, and budget.</p></div>
-    <div class="step rv d2"><div class="step-num">02</div><h4>Design &amp; Quote</h4><p>Our team prepares detailed drawings, material recommendations, and a transparent project quote.</p></div>
-    <div class="step rv d3"><div class="step-num">03</div><h4>Installation</h4><p>Certified installers execute the work with precision, keeping the site clean and on schedule.</p></div>
-    <div class="step rv d4"><div class="step-num">04</div><h4>Final Inspection</h4><p>We walk through the completed project with you to ensure every detail meets our high standards.</p></div>
-  </div>
-</div></section>
-<section class="cta-section"><div class="cta-inner rv"><h2>Ready to Start Your Project?</h2><p>Contact us today to discuss your siding and cladding needs. We're here to bring your vision to life — proudly serving the GTA and all of Ontario.</p><div class="cta-btns"><a href="quote.html" class="btn-solid">Request a Quote</a><a href="tel:+14167415140" class="btn-outline">Call +1(416) 741-5140</a></div></div></section>
+</section>
+
+<!-- FOOTER — updated: removed Products, added Blue Sky Supplies -->
 <footer class="footer">
   <div class="footer-inner">
     <div>
-      <div class="flogo"><img src="logo.jpg" alt="BlueSky"><span class="flogo-name">Blue Sky Siding <span>&amp; Cladding Inc.</span></span></div>
+      <div class="flogo"><img src="images/logo.jpg" alt="BlueSky"><span class="flogo-name">Blue Sky Siding <span>&amp; Cladding Inc.</span></span></div>
       <p class="fdesc">Leading provider of premium metal siding and cladding solutions. Quality materials, expert craftsmanship, outstanding results.</p>
     </div>
-    <div><h4>Navigation</h4><ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="bluskysupplies.html">Blue Sky Supplies</a></li>
-      <li><a href="careers.html">Careers</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-    </ul></div>
-    <div><h4>Project Gallery</h4>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:.2rem;">
-        <a href="gallery-1.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;"><img src="gallery-1.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></a>
-        <a href="gallery-2.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;"><img src="gallery-2.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></a>
-        <a href="gallery-3.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;"><img src="gallery-3.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></a>
-        <a href="gallery-4.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;"><img src="gallery-4.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></a>
-        <a href="gallery-5.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;"><img src="gallery-5.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></a>
-        <a href="gallery-6.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;"><img src="gallery-6.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></a></div>
+    <div>
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="bluskysupplies.html">Blue Sky Supplies</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
     </div>
-    <div><h4>Contact</h4><ul>
-      <li><a href="tel:+14167415140">+1(416) 741-5140</a></li>
-      <li><a href="mailto:info@blueskysiding.ca">info@blueskysiding.ca</a></li>
-      <li><a href="careers.html">Careers</a></li>
-      <li><a href="quote.html">Get a Quote</a></li>
-    </ul></div>
+    <div>
+      <h4>Project Gallery</h4>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:.2rem;">
+        <a href="images/gallery-1.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;">
+          <img src="images/gallery-1.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;filter:brightness(.9);" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+        </a>
+        <a href="images/gallery-2.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;">
+          <img src="images/gallery-2.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;filter:brightness(.9);" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+        </a>
+        <a href="images/gallery-3.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;">
+          <img src="images/gallery-3.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;filter:brightness(.9);" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+        </a>
+        <a href="images/gallery-4.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;">
+          <img src="images/gallery-4.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;filter:brightness(.9);" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+        </a>
+        <a href="images/gallery-5.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;">
+          <img src="images/gallery-5.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;filter:brightness(.9);" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+        </a>
+        <a href="images/gallery-6.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;">
+          <img src="images/gallery-6.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;filter:brightness(.9);" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+        </a>
+      </div>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+14167415140">+1(416) 741-5140</a></li>
+        <li><a href="mailto:info@blueskysiding.ca">info@blueskysiding.ca</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="quote.html">Get a Quote</a></li>
+      </ul>
+    </div>
   </div>
   <div class="fcopy">&copy; 2022 BlueSky Siding &amp; Cladding Inc. All rights reserved.</div>
 </footer>
+
 <script>
-window.addEventListener("load",function(){setTimeout(function(){var l=document.getElementById("loader");l.classList.add("out");setTimeout(function(){l.style.display="none";},700);},2100);});
-var ro=new IntersectionObserver(function(entries){entries.forEach(function(e,i){if(e.isIntersecting){setTimeout(function(){e.target.classList.add("on");},i*70);ro.unobserve(e.target);}});},{threshold:.1});
-document.querySelectorAll(".rv").forEach(function(el){ro.observe(el);});
-window.addEventListener("scroll",function(){var nb=document.querySelector(".navbar");if(nb)nb.style.boxShadow=window.scrollY>=40?"0 4px 20px rgba(0,0,0,.1)":"0 1px 20px rgba(0,0,0,.06)";});
+window.addEventListener('load',()=>{
+  setTimeout(()=>{
+    const l=document.getElementById('loader');
+    l.classList.add('out');
+    setTimeout(()=>l.style.display='none',700);
+  },2100);
+});
+
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){setTimeout(()=>e.target.classList.add('on'),i*70);ro.unobserve(e.target);}
+  });
+},{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
+
+const po=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const cards=[...document.querySelectorAll('.pillar')];
+      const idx=cards.indexOf(entry.target);
+      setTimeout(()=>entry.target.classList.add('on'),idx*100);
+      po.unobserve(entry.target);
+    }
+  });
+},{threshold:.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.pillar').forEach(c=>po.observe(c));
+
+document.querySelectorAll('.btn-solid,.btn-outline,.nav-cta').forEach(btn=>{
+  btn.addEventListener('mousemove',e=>{
+    const r=btn.getBoundingClientRect();
+    btn.style.transform=`translate(${(e.clientX-(r.left+r.width/2))*.28}px,${(e.clientY-(r.top+r.height/2))*.28}px)`;
+  });
+  btn.addEventListener('mouseleave',()=>btn.style.transform='');
+});
+
+window.addEventListener('scroll',()=>{
+  document.querySelector('.navbar').style.boxShadow=
+    scrollY>40?'0 4px 20px rgba(0,0,0,.1)':'0 1px 20px rgba(0,0,0,.06)';
+});
 </script>
-</body></html>
+</body>
+</html>
