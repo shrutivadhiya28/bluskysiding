@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Careers &mdash; BlueSky Siding &amp; Cladding Inc.</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap');
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',Georgia,sans-serif;color:#1A2D42;background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+:root{--navy:#0B1F3A;--sky:#2C7BE5;--skyL:#4F9EF8;--steel:#4A5D72;--cream:#F5F7FA;--muted:#6B7E92;}
+#loader{position:fixed;inset:0;background:var(--navy);z-index:9000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;}
+.ld-text{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#fff;opacity:0;animation:fadeIn .6s .2s ease forwards;}
+.ld-text span{color:var(--skyL);}
+.ld-track{width:200px;height:2px;background:rgba(255,255,255,.12);border-radius:2px;overflow:hidden;opacity:0;animation:fadeIn .6s .4s ease forwards;}
+.ld-bar{height:100%;width:0%;background:linear-gradient(90deg,var(--sky),var(--skyL));animation:ldBar 1.6s .5s ease forwards;}
+@keyframes ldBar{to{width:100%;}}
+@keyframes fadeIn{to{opacity:1;}}
+#loader.out{animation:ldOut .7s ease forwards;}
+@keyframes ldOut{to{transform:translateY(-100%);opacity:0;}}
+.navbar{position:fixed;top:0;width:100%;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(11,31,58,.08);box-shadow:0 1px 20px rgba(0,0,0,.06);z-index:500;transform:translateY(-100%);animation:navIn .6s 2.1s ease forwards;}
+@keyframes navIn{to{transform:translateY(0);}}
+.nav-inner{max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.85rem 2rem;}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo img{height:52px;}
+.logo-name{font-weight:700;font-size:1.05rem;color:var(--navy);line-height:1.3;}
+.logo-name span{color:var(--sky);}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none;}
+.nav-links a{text-decoration:none;font-size:.9rem;font-weight:500;color:var(--steel);transition:color .2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1.5px;background:var(--sky);transform:scaleX(0);transform-origin:right;transition:transform .3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--sky);}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);transform-origin:left;}
+.nav-cta{background:var(--sky)!important;color:#fff!important;padding:.6rem 1.4rem;border-radius:6px;font-weight:600!important;}
+.nav-cta::after{display:none!important;}
+.nav-cta:hover{background:#1a6dd0!important;transform:translateY(-2px)!important;box-shadow:0 6px 20px rgba(44,123,229,.35)!important;}
+.hero{margin-top:80px;min-height:72vh;background:var(--navy);position:relative;overflow:hidden;display:flex;align-items:center;}
+.hero-mesh{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 80% 70% at 65% 45%,rgba(44,123,229,.22) 0%,transparent 65%),radial-gradient(ellipse 50% 60% at 5% 85%,rgba(79,158,248,.12) 0%,transparent 55%);animation:meshShift 12s ease-in-out infinite alternate;}
+@keyframes meshShift{0%{filter:hue-rotate(0deg) brightness(1);}100%{filter:hue-rotate(15deg) brightness(1.08);}}
+.hero-grid{position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(44,123,229,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(44,123,229,.07) 1px,transparent 1px);background-size:60px 60px;animation:gridDrift 20s linear infinite;}
+@keyframes gridDrift{0%{background-position:0 0;}100%{background-position:60px 60px;}}
+.hero-inner{position:relative;z-index:2;max-width:1320px;margin:0 auto;width:100%;padding:6rem 2rem 5rem;display:grid;grid-template-columns:1.1fr .9fr;gap:5rem;align-items:center;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--skyL);margin-bottom:1.2rem;opacity:0;transform:translateX(-30px);animation:sRight .7s 2.2s ease forwards;}
+.hero-eyebrow::before{content:'';width:28px;height:2px;background:var(--skyL);display:block;}
+@keyframes sRight{to{opacity:1;transform:translateX(0);}}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4vw,3.8rem);font-weight:700;color:#fff;line-height:1.12;margin-bottom:1.4rem;opacity:0;transform:translateY(40px);animation:sUp .8s 2.35s ease forwards;}
+.hero h1 em{font-style:italic;color:var(--skyL);}
+@keyframes sUp{to{opacity:1;transform:translateY(0);}}
+.hero-desc{font-size:1.05rem;color:rgba(255,255,255,.65);line-height:1.85;max-width:500px;opacity:0;transform:translateY(30px);animation:sUp .8s 2.5s ease forwards;}
+.hero-badges{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2.5rem;opacity:0;animation:sUp .8s 2.65s ease forwards;}
+.badge{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.8);font-size:.8rem;font-weight:500;padding:.45rem 1rem;border-radius:50px;transition:background-color .3s,border-color .3s;}
+.badge:hover{background:rgba(44,123,229,.2);border-color:rgba(44,123,229,.4);}
+.hero-visual{opacity:0;transform:translateX(50px);animation:sLeft .9s 2.4s ease forwards;}
+@keyframes sLeft{to{opacity:1;transform:translateX(0);}}
+.visual-panel{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:2.2rem;position:relative;overflow:hidden;}
+.visual-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--sky),var(--skyL),#38b6ff);}
+.vp-title{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1.6rem;}
+.vp-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.6rem;}
+.vp-stat{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:1.1rem 1rem;text-align:center;transition:background-color .3s,border-color .3s;}
+.vp-stat:hover{background:rgba(44,123,229,.12);border-color:rgba(44,123,229,.25);}
+.vp-stat-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--skyL);line-height:1;}
+.vp-stat-lbl{font-size:.76rem;color:rgba(255,255,255,.45);margin-top:.3rem;font-weight:500;}
+.vp-divider{height:1px;background:rgba(255,255,255,.08);margin:0 0 1.4rem;}
+.vp-list{display:flex;flex-direction:column;gap:.7rem;}
+.vp-item{display:flex;align-items:center;gap:.9rem;font-size:.88rem;color:rgba(255,255,255,.7);font-weight:500;}
+.vp-dot{width:7px;height:7px;min-width:7px;background:var(--skyL);border-radius:50%;box-shadow:0 0 8px rgba(79,158,248,.5);}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeIn 1s 3.2s ease forwards;}
+.scroll-hint span{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);}
+.scroll-mouse{width:22px;height:34px;border:1.5px solid rgba(255,255,255,.25);border-radius:11px;display:flex;align-items:flex-start;justify-content:center;padding-top:6px;}
+.scroll-wheel{width:3px;height:8px;background:var(--skyL);border-radius:2px;animation:wheel 1.5s ease-in-out infinite;}
+@keyframes wheel{0%{transform:translateY(0);opacity:1;}100%{transform:translateY(12px);opacity:0;}}
+.marquee{background:var(--sky);padding:.9rem 0;overflow:hidden;}
+.marquee-track{display:flex;gap:3rem;width:max-content;animation:mroll 25s linear infinite;}
+@keyframes mroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.marquee-item{font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.9);white-space:nowrap;display:flex;align-items:center;gap:1.5rem;}
+.mdot{width:5px;height:5px;background:rgba(255,255,255,.5);border-radius:50%;display:inline-block;}
+.intro-wrap{background:#fff;padding:8rem 2rem;position:relative;overflow:hidden;}
+.intro-wrap::before{content:'';position:absolute;bottom:-150px;right:-150px;width:500px;height:500px;background:radial-gradient(circle,rgba(44,123,229,.05),transparent 70%);border-radius:50%;animation:driftOrb 18s ease-in-out infinite alternate;}
+@keyframes driftOrb{0%{transform:translate(0,0);}100%{transform:translate(-80px,-60px) scale(1.2);}}
+.intro-inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;position:relative;z-index:1;}
+.sec-label{font-size:.76rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--sky);margin-bottom:1rem;display:flex;align-items:center;gap:8px;}
+.sec-label::after{content:'';width:40px;height:1px;background:var(--sky);opacity:.4;}
+.sec-heading{font-family:'Playfair Display',serif;font-size:clamp(2rem,3vw,3rem);font-weight:700;color:var(--navy);line-height:1.15;margin-bottom:1rem;}
+.sec-heading em{font-style:italic;color:var(--sky);}
+.intro-body p{font-size:1rem;color:var(--muted);line-height:1.9;margin-bottom:1.1rem;}
+.intro-body p strong{color:#1A2D42;}
+.pill-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.8rem;}
+.pill{background:var(--cream);border:1px solid rgba(44,123,229,.15);color:var(--navy);font-size:.8rem;font-weight:600;padding:.38rem .9rem;border-radius:50px;transition:background-color .2s,border-color .2s,transform .2s;}
+.pill:hover{background:rgba(44,123,229,.08);border-color:var(--sky);transform:translateY(-2px);}
+.notice-card{background:var(--navy);border-radius:20px;padding:2.4rem;position:relative;overflow:hidden;}
+.notice-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--sky),var(--skyL),#38b6ff);}
+.notice-card::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(44,123,229,.2),transparent 70%);}
+.nc-inner{position:relative;z-index:1;}
+.nc-icon{width:52px;height:52px;background:rgba(44,123,229,.2);border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.3rem;}
+.nc-title{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:#fff;margin-bottom:.7rem;}
+.nc-desc{font-size:.9rem;color:rgba(255,255,255,.58);line-height:1.85;margin-bottom:1.5rem;}
+.nc-tip{background:rgba(44,123,229,.15);border:1px solid rgba(44,123,229,.3);border-radius:10px;padding:1rem 1.2rem;}
+.nc-tip p{font-size:.84rem;color:rgba(255,255,255,.72);line-height:1.7;}
+.nc-tip strong{color:var(--skyL);}
+.benefits-wrap{background:var(--cream);padding:8rem 2rem;position:relative;overflow:hidden;}
+.benefits-wrap::before{content:'';position:absolute;bottom:-150px;left:-150px;width:500px;height:500px;background:radial-gradient(circle,rgba(44,123,229,.05),transparent 70%);border-radius:50%;}
+.benefits-inner{max-width:1320px;margin:0 auto;position:relative;z-index:1;}
+.bh{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end;margin-bottom:4rem;}
+.bh-desc{font-size:1.05rem;color:var(--muted);max-width:560px;line-height:1.8;}
+.b-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.b-card{background:#fff;border-radius:16px;padding:2rem 1.8rem;border:1px solid rgba(11,31,58,.06);position:relative;overflow:hidden;display:flex;flex-direction:column;opacity:0;transform:translateY(36px);transition:opacity .6s ease,transform .6s ease,border-color .3s,box-shadow .3s;}
+.b-card.on{opacity:1;transform:translateY(0);}
+.b-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--sky),var(--skyL));transform:scaleX(0);transform-origin:left;transition:transform .4s ease;}
+.b-card:hover{border-color:rgba(44,123,229,.18);box-shadow:0 20px 50px rgba(44,123,229,.1);}
+.b-card:hover::before{transform:scaleX(1);}
+.b-icon{width:54px;height:54px;min-width:54px;border-radius:13px;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:1.55rem;margin-bottom:1.3rem;transition:transform .4s cubic-bezier(.34,1.56,.64,1),background-color .3s;}
+.b-card:hover .b-icon{transform:rotate(-8deg) scale(1.12);background:var(--sky);}
+.b-card h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:.65rem;line-height:1.3;}
+.b-card p{font-size:.9rem;color:var(--muted);line-height:1.8;flex-grow:1;}
+.app-wrap{background:#fff;padding:8rem 2rem;position:relative;overflow:hidden;}
+.app-wrap::after{content:'';position:absolute;top:-100px;right:-100px;width:450px;height:450px;background:radial-gradient(circle,rgba(44,123,229,.04),transparent 70%);border-radius:50%;}
+.app-inner{max-width:900px;margin:0 auto;position:relative;z-index:1;text-align:center;}
+.app-heading{font-family:'Playfair Display',serif;font-size:clamp(2rem,3vw,3rem);font-weight:700;color:var(--navy);line-height:1.15;margin-bottom:1rem;}
+.app-heading em{font-style:italic;color:var(--sky);}
+.app-sub{font-size:1.05rem;color:var(--muted);line-height:1.85;max-width:620px;margin:0 auto 3.5rem;}
+.email-card{background:var(--navy);border-radius:24px;padding:3rem 2.5rem;position:relative;overflow:hidden;max-width:640px;margin:0 auto;}
+.email-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#1056bb,var(--sky),var(--skyL),#38b6ff);}
+.email-card::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(44,123,229,.18),transparent 65%);}
+.ec-inner{position:relative;z-index:1;}
+.ec-icon{width:64px;height:64px;background:rgba(44,123,229,.25);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.9rem;margin:0 auto 1.5rem;}
+.ec-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:#fff;margin-bottom:.8rem;}
+.ec-desc{font-size:.93rem;color:rgba(255,255,255,.6);line-height:1.8;margin-bottom:2rem;}
+.ec-email-btn{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(90deg,#1056bb,var(--sky));color:#fff;text-decoration:none;padding:1rem 2rem;border-radius:10px;font-weight:700;font-size:1rem;letter-spacing:.02em;transition:transform .2s,box-shadow .2s;box-shadow:0 8px 30px rgba(44,123,229,.4);}
+.ec-email-btn:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(44,123,229,.55);}
+.ec-email-btn svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+.ec-address{display:block;margin-top:1.2rem;font-size:.85rem;color:rgba(255,255,255,.4);letter-spacing:.02em;}
+.ec-tip{background:rgba(44,123,229,.15);border:1px solid rgba(44,123,229,.3);border-radius:10px;padding:.9rem 1.2rem;margin-top:1.8rem;text-align:left;}
+.ec-tip p{font-size:.83rem;color:rgba(255,255,255,.7);line-height:1.7;}
+.ec-tip strong{color:var(--skyL);}
+.what-to-include{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2.5rem auto 0;max-width:720px;}
+.wti-item{background:var(--cream);border-radius:12px;padding:1.4rem 1rem;border:1px solid rgba(11,31,58,.06);text-align:center;transition:border-color .3s,box-shadow .3s,transform .3s;}
+.wti-item:hover{border-color:rgba(44,123,229,.2);box-shadow:0 12px 30px rgba(44,123,229,.08);transform:translateY(-3px);}
+.wti-icon{font-size:1.6rem;margin-bottom:.6rem;display:block;}
+.wti-label{font-size:.82rem;font-weight:600;color:var(--navy);}
+.wti-sub{font-size:.77rem;color:var(--muted);margin-top:.2rem;}
+.cta-section{background:linear-gradient(135deg,#1056bb 0%,var(--sky) 60%,#38b6ff 100%);padding:7rem 2rem;text-align:center;position:relative;overflow:hidden;}
+.cta-section::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(-45deg,transparent,transparent 28px,rgba(255,255,255,.04) 28px,rgba(255,255,255,.04) 29px);}
+.corb{position:absolute;border-radius:50%;background:rgba(255,255,255,.06);animation:orbF linear infinite;}
+.corb:nth-child(1){width:320px;height:320px;top:-80px;left:-80px;animation-duration:18s;}
+.corb:nth-child(2){width:220px;height:220px;bottom:-60px;right:-50px;animation-duration:14s;}
+.corb:nth-child(3){width:160px;height:160px;top:40%;right:12%;animation-duration:22s;}
+@keyframes orbF{0%,100%{transform:translateY(0) rotate(0deg);}33%{transform:translateY(-30px) rotate(120deg);}66%{transform:translateY(20px) rotate(240deg);}}
+.cta-inner{position:relative;z-index:2;max-width:720px;margin:0 auto;}
+.cta-inner h2{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:700;color:#fff;margin-bottom:1.2rem;line-height:1.15;}
+.cta-inner p{font-size:1.05rem;color:rgba(255,255,255,.8);line-height:1.8;margin-bottom:2.8rem;}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.btn-solid{display:inline-block;background:#fff;color:var(--sky);padding:.95rem 2.4rem;border-radius:8px;font-weight:700;font-size:.95rem;text-decoration:none;box-shadow:0 6px 30px rgba(0,0,0,.2);transition:transform .2s,box-shadow .2s;}
+.btn-solid:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 12px 40px rgba(0,0,0,.3);}
+.btn-outline{display:inline-block;background:transparent;color:#fff;padding:.95rem 2.4rem;border-radius:8px;font-weight:700;font-size:.95rem;text-decoration:none;border:2px solid rgba(255,255,255,.5);transition:border-color .2s,background-color .2s,transform .2s;}
+.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.1);transform:translateY(-3px);}
+.footer{background:var(--cream);border-top:1px solid rgba(0,0,0,.06);padding:4.5rem 2rem 2rem;}
+.footer-inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.flogo{display:flex;align-items:center;gap:10px;margin-bottom:1rem;}
+.flogo img{height:50px;}
+.flogo-name{font-weight:700;font-size:.95rem;color:var(--navy);}
+.flogo-name span{color:var(--sky);}
+.fdesc{font-size:.9rem;color:var(--muted);line-height:1.8;}
+.footer h4{font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:1.4rem;}
+.footer ul{list-style:none;}
+.footer ul li{margin-bottom:.75rem;}
+.footer ul a{font-size:.9rem;color:var(--muted);text-decoration:none;transition:color .2s,padding-left .2s;}
+.footer ul a:hover{color:var(--sky);padding-left:4px;}
+.fcopy{border-top:1px solid rgba(0,0,0,.08);padding-top:1.5rem;font-size:.85rem;color:var(--muted);text-align:center;}
+.rv{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease;}
+.rv.l{transform:translateX(-40px);}
+.rv.r{transform:translateX(40px);}
+.rv.sc{transform:scale(.92);}
+.rv.on{opacity:1;transform:none;}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}.d4{transition-delay:.4s;}
+@media(max-width:1024px){.intro-inner,.bh{grid-template-columns:1fr;gap:3rem;}.b-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:768px){.nav-links{display:none;}.hero-inner{grid-template-columns:1fr;}.hero-visual{display:none;}.b-grid{grid-template-columns:1fr;}.footer-inner{grid-template-columns:1fr 1fr;}.cta-btns{flex-direction:column;align-items:center;}.what-to-include{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div id="loader"><div class="ld-text">Blue Sky <span>Siding</span></div><div class="ld-track"><div class="ld-bar"></div></div></div>
+
+<!-- NAVBAR — updated: removed Products, added Blue Sky Supplies -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <img src="images/logo.jpg" alt="BlueSky Siding">
+      <span class="logo-name">Blue Sky Siding <span>&amp; Cladding Inc.</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="bluskysupplies.html">Blue Sky Supplies</a></li>
+      <li><a href="careers.html" class="active">Careers</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="quote.html" class="nav-cta">Get a Quote</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero"><div class="hero-mesh"></div><div class="hero-grid"></div><div class="hero-inner"><div><p class="hero-eyebrow">Join Our Team</p><h1>Come Work With<br><em>BlueSky Siding.</em></h1><p class="hero-desc">We're a growing exterior crew in Ontario that values skilled tradespeople, honest work, and the pride that comes from a job done right.</p><div class="hero-badges"><span class="badge">Cladding Installers</span><span class="badge">Siding Contractors</span><span class="badge">Estimators</span><span class="badge">Project Managers</span><span class="badge">Drafters</span></div></div><div class="hero-visual"><div class="visual-panel"><p class="vp-title">Life at BlueSky</p><div class="vp-stats"><div class="vp-stat"><div class="vp-stat-num">100+</div><div class="vp-stat-lbl">Projects Completed</div></div><div class="vp-stat"><div class="vp-stat-num">4+</div><div class="vp-stat-lbl">Years in Business</div></div><div class="vp-stat"><div class="vp-stat-num">GTA</div><div class="vp-stat-lbl">Service Area</div></div><div class="vp-stat"><div class="vp-stat-num">100%</div><div class="vp-stat-lbl">Client Satisfaction</div></div></div><div class="vp-divider"></div><div class="vp-list"><div class="vp-item"><span class="vp-dot"></span><span>Competitive Wages &amp; Benefits</span></div><div class="vp-item"><span class="vp-dot"></span><span>Real Career Growth Opportunities</span></div><div class="vp-item"><span class="vp-dot"></span><span>Supportive &amp; Inclusive Team</span></div><div class="vp-item"><span class="vp-dot"></span><span>Stable Year-Round Work</span></div></div></div></div></div><div class="scroll-hint"><span>Scroll</span><div class="scroll-mouse"><div class="scroll-wheel"></div></div></div></section>
+
+<div class="marquee"><div class="marquee-track"><div class="marquee-item">Cladding Installer <span class="mdot"></span></div><div class="marquee-item">Siding Contractor <span class="mdot"></span></div><div class="marquee-item">Estimator <span class="mdot"></span></div><div class="marquee-item">Project Manager <span class="mdot"></span></div><div class="marquee-item">Custom Fabricator <span class="mdot"></span></div><div class="marquee-item">Site Supervisor <span class="mdot"></span></div><div class="marquee-item">Drafter <span class="mdot"></span></div><div class="marquee-item">Aluminum Specialist <span class="mdot"></span></div><div class="marquee-item">Cladding Installer <span class="mdot"></span></div><div class="marquee-item">Siding Contractor <span class="mdot"></span></div><div class="marquee-item">Estimator <span class="mdot"></span></div><div class="marquee-item">Project Manager <span class="mdot"></span></div><div class="marquee-item">Custom Fabricator <span class="mdot"></span></div><div class="marquee-item">Site Supervisor <span class="mdot"></span></div><div class="marquee-item">Drafter <span class="mdot"></span></div><div class="marquee-item">Aluminum Specialist <span class="mdot"></span></div></div></div>
+
+<section class="intro-wrap"><div class="intro-inner"><div class="rv l"><p class="sec-label">Who We Are</p><h2 class="sec-heading">A team built on<br><em>craft &amp; care.</em></h2><div class="intro-body"><p>BlueSky Siding is the perfect place to work if you're looking for an environment where people <strong>truly care about each other and their success.</strong> We are a growing Ontario business specializing in premium siding and cladding solutions.</p><p>Our projects use a wide range of materials — aluminum composite panels, metal siding, aluminum siding, and custom cladding solutions for residential and commercial buildings across the GTA.</p></div><p style="font-size:.76rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sky);margin-top:1.8rem;margin-bottom:.8rem;">Roles We Typically Hire For</p><div class="pill-row"><span class="pill">Cladding Installers</span><span class="pill">Siding Contractors</span><span class="pill">Estimators</span><span class="pill">Drafters</span><span class="pill">Project Managers</span><span class="pill">Custom Fabricators</span><span class="pill">Site Supervisors</span></div></div><div class="rv r d2"><div class="notice-card"><div class="nc-inner"><div class="nc-icon">&#128203;</div><h3 class="nc-title">No Open Positions Right Now</h3><p class="nc-desc">We don't have active listings at the moment — but we're always growing and that can change quickly. Send us your resume and we'll keep your information on file. When a role matches your background, you'll be the first we call.</p><div class="nc-tip"><p><strong>Tip:</strong> A short cover letter describing your trade experience and the type of work you enjoy makes a real difference when we review applications later.</p></div></div></div></div></div></section>
+
+<section class="benefits-wrap" id="why"><div class="benefits-inner"><div class="bh"><div class="rv l"><p class="sec-label">Why Join Us</p><h2 class="sec-heading">What we offer<br>our team.</h2></div><p class="bh-desc rv r d2">We believe in taking care of the people who take care of our projects. Here's what it means to be part of the BlueSky crew.</p></div><div class="b-grid"><div class="b-card"><div class="b-icon">&#128176;</div><h3>Competitive Wages</h3><p>We offer compensation that reflects your skills and experience — and we review it as you grow with us.</p></div><div class="b-card"><div class="b-icon">&#128200;</div><h3>Professional Growth</h3><p>As we grow, you grow. We promote from within and create real paths for people who want more responsibility.</p></div><div class="b-card"><div class="b-icon">&#129309;</div><h3>Supportive Team</h3><p>A collaborative environment where your contributions are valued and your teammates have your back on every job.</p></div><div class="b-card"><div class="b-icon">&#127959;&#65039;</div><h3>Quality Projects</h3><p>Work on residential and commercial projects using premium materials — work you'll genuinely be proud of.</p></div><div class="b-card"><div class="b-icon">&#128737;&#65039;</div><h3>Stability &amp; Security</h3><p>Consistent project flow across the GTA means steady, year-round work at a company that plans ahead.</p></div><div class="b-card"><div class="b-icon">&#127775;</div><h3>Inclusive Culture</h3><p>We hire based on skill, attitude, and work ethic. Every background and culture is welcomed and respected here.</p></div></div></div></section>
+
+<section class="app-wrap" id="apply">
+  <div class="app-inner">
+    <div class="rv">
+      <p class="sec-label" style="justify-content:center;">Apply Today</p>
+      <h2 class="app-heading">Ready to Join the<br><em>BlueSky Team?</em></h2>
+      <p class="app-sub">No open roles right now — but we always keep great candidates on file. Just send us your resume by email and we'll reach out when a matching position opens up.</p>
+    </div>
+    <div class="rv d2">
+      <div class="email-card">
+        <div class="ec-inner">
+          <div class="ec-icon">&#128140;</div>
+          <h3 class="ec-title">Send Your Resume</h3>
+          <p class="ec-desc">Email your resume directly to our team. No accounts, no forms — just attach your CV and tell us a little about yourself and what role you're interested in.</p>
+          <a href="mailto:info@blueskysiding.ca?subject=Job%20Application%20-%20BlueSky%20Siding&body=Hi%20BlueSky%20team%2C%0A%0AI%20am%20interested%20in%20joining%20your%20team.%20Please%20find%20my%20resume%20attached.%0A%0ARole%20of%20interest%3A%0AYears%20of%20experience%3A%0A%0AThanks%2C" class="ec-email-btn">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Email Us Your Resume
+          </a>
+          <span class="ec-address">info@blueskysiding.ca</span>
+          <div class="ec-tip">
+            <p><strong>Pro tip:</strong> Include a short note about your trade experience, the role you're interested in, and your years of experience — it makes a real difference when we review later.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="what-to-include rv d3">
+      <div class="wti-item">
+        <span class="wti-icon">&#128196;</span>
+        <div class="wti-label">Resume / CV</div>
+        <div class="wti-sub">PDF or Word format</div>
+      </div>
+      <div class="wti-item">
+        <span class="wti-icon">&#128736;&#65039;</span>
+        <div class="wti-label">Role of Interest</div>
+        <div class="wti-sub">Installer, PM, estimator…</div>
+      </div>
+      <div class="wti-item">
+        <span class="wti-icon">&#128172;</span>
+        <div class="wti-label">Brief Intro</div>
+        <div class="wti-sub">A few lines about yourself</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section"><div class="corb"></div><div class="corb"></div><div class="corb"></div><div class="cta-inner rv sc"><h2>Questions? Just Give Us a Call.</h2><p>Want to speak with someone directly about working with BlueSky Siding? We're happy to talk.</p><div class="cta-btns"><a href="mailto:info@blueskysiding.ca?subject=Job%20Application%20-%20BlueSky%20Siding" class="btn-solid">Email Your Resume</a><a href="tel:+14167415140" class="btn-outline">Call +1(416) 741-5140</a></div></div></section>
+
+<!-- FOOTER — updated: removed Products, added Blue Sky Supplies -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="flogo"><img src="images/logo.jpg" alt="BlueSky"><span class="flogo-name">Blue Sky Siding <span>&amp; Cladding Inc.</span></span></div>
+      <p class="fdesc">Leading provider of premium metal siding and cladding solutions. Quality materials, expert craftsmanship, outstanding results.</p>
+    </div>
+    <div>
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="bluskysupplies.html">Blue Sky Supplies</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Project Gallery</h4>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:.2rem;">
+        <a href="images/gallery-1.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;"><img src="images/gallery-1.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;filter:brightness(.9);" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></a>
+        <a href="images/gallery-2.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;"><img src="images/gallery-2.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;filter:brightness(.9);" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></a>
+        <a href="images/gallery-3.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;"><img src="images/gallery-3.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;filter:brightness(.9);" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></a>
+        <a href="images/gallery-4.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;"><img src="images/gallery-4.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;filter:brightness(.9);" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></a>
+        <a href="images/gallery-5.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;"><img src="images/gallery-5.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;filter:brightness(.9);" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></a>
+        <a href="images/gallery-6.jpg" target="_blank" style="display:block;aspect-ratio:1;overflow:hidden;border-radius:6px;"><img src="images/gallery-6.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;filter:brightness(.9);" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></a>
+      </div>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+14167415140">+1(416) 741-5140</a></li>
+        <li><a href="mailto:info@blueskysiding.ca">info@blueskysiding.ca</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="quote.html">Get a Quote</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fcopy">&copy; 2022 BlueSky Siding &amp; Cladding Inc. All rights reserved.</div>
+</footer>
+
+<script>
+window.addEventListener('load',function(){setTimeout(function(){var l=document.getElementById('loader');l.classList.add('out');setTimeout(function(){l.style.display='none';},700);},2100);});
+var ro=new IntersectionObserver(function(entries){entries.forEach(function(e,i){if(e.isIntersecting){setTimeout(function(){e.target.classList.add('on');},i*70);ro.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll('.rv').forEach(function(el){ro.observe(el);});
+var bo=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){var cards=Array.prototype.slice.call(document.querySelectorAll('.b-card'));var idx=cards.indexOf(entry.target);setTimeout(function(){entry.target.classList.add('on');},idx*80);bo.unobserve(entry.target);}});},{threshold:.1});
+document.querySelectorAll('.b-card').forEach(function(c){bo.observe(c);});
+document.querySelectorAll('.b-card').forEach(function(card){card.addEventListener('mousemove',function(e){var r=card.getBoundingClientRect();var rx=((e.clientY-r.top-r.height/2)/(r.height/2))*4;var ry=((e.clientX-r.left-r.width/2)/(r.width/2))*-4;card.style.transition='transform .08s ease,box-shadow .3s,border-color .3s';card.style.transform='translateY(-6px) rotateX('+rx+'deg) rotateY('+ry+'deg)';});card.addEventListener('mouseleave',function(){card.style.transition='transform .5s cubic-bezier(.34,1.56,.64,1),box-shadow .3s,border-color .3s';card.style.transform='';});});
+document.querySelectorAll('.btn-solid,.btn-outline,.nav-cta').forEach(function(btn){btn.addEventListener('mousemove',function(e){var r=btn.getBoundingClientRect();btn.style.transform='translate('+(e.clientX-(r.left+r.width/2))*.28+'px,'+(e.clientY-(r.top+r.height/2))*.28+'px)';});btn.addEventListener('mouseleave',function(){btn.style.transform='';});});
+window.addEventListener('scroll',function(){document.querySelector('.navbar').style.boxShadow=window.scrollY>=40?'0 4px 20px rgba(0,0,0,.1)':'0 1px 20px rgba(0,0,0,.06)';});
+document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});});
+</script>
+</body>
+</html>
